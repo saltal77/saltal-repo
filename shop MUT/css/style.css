@@ -1,0 +1,243 @@
+
+/* Цвет фона страниц */
+body {
+	/*background-color: #f8f8f8*/
+	background: linear-gradient(to left, white, #edebed);
+}
+
+/* Запрет обтекания черной полосой других блоков */
+hr{
+	clear:both;
+}
+
+/* Стиль основного меню на всех страницах */
+nav{
+	float: right;
+	margin-top: 15px;
+	margin-right: 15px;	
+}
+
+nav a{
+    color: #4a4646;
+	font-style: Italic;
+	font-family: Cambria;
+	font-size: 18px;	
+}
+
+nav a:hover{
+	color: #fd6a70;
+	font-style: Italic;
+	font-family: Cambria;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow:  1px 1px 1px gray, 0 0 2em #fd6a70;	
+}
+
+
+h3 {
+	text-shadow:  1px 1px 1px gray, 0 0 2em #fd6a70;
+}
+
+h4 {
+	text-shadow:  1px 1px 1px gray, 0 0 2em #fd6a70;
+}
+
+
+/* Стиль основного меню header всех страниц */
+.header{
+	height: 200px;
+	background-image: url(../img/fon.jpg);
+	display: block;	
+}
+
+/*Стиль footer всех страниц*/
+.footer{
+	height: 50px;
+	background-color:#edebed;
+	text-align: right;
+	padding-right: 10px;
+	padding-top: 10px;
+	clear: both;	
+}
+
+/* Стиль блока Container */
+.container{
+	width: 33%;
+	left: 33%;
+	text-align: center;
+	position: relative;
+	min-height: calc(75vh - 50px);
+}
+
+/*Стиль контейнера логотип*/
+.logo{
+	margin-left: 15px;
+	margin-top: 15px;
+	float: left;
+	margin-bottom: 95px;
+}
+
+/* Стиль всех ссылок */
+a{
+text-decoration: none;	
+}
+
+/* Стиль всех ссылок всех страниц  при наведении курсора */
+a:hover {
+	  color: steelblue;	  
+}
+
+/* Стиль Заголовков Краткое и Подробное описание, Характеристики */
+.zagolovok1 {
+	color: black;
+	font-size: 18px;
+	background-color: #eaeaea;
+	font-weight:400;
+	clear: both;
+}
+/* Первая буква параграфа */
+.zagolovok1:first-letter {
+	color: #556B2F;
+	font-size: 19px;
+	font-style: Italic;
+	font-family: Arial;	
+}
+/* Стиль блоков картинки на странице Каталог*/
+.image{
+	float:left;
+	position: relative;
+	margin-right: 10px;	
+}
+
+/* Стиль блоков название товара на странице Каталог */
+.nazvanie .opisanie {
+	float:left;
+	position: relative;
+}
+
+/* Стиль Текста Кракое описание */
+.text_style1 {
+	color: #707070;
+	font-size: 14px;
+	font-style: Italic;
+	line-height: 16px;
+}
+/* Первая буква параграфа */
+.text_style1:first-letter {
+	color: #556B2F;
+	font-size: 16px;
+	font-style: Italic;
+	font-family: Arial;
+}
+
+/* Кнопка купить */
+.knopka{
+	height: 20px;
+	width: 75px;
+	background-color: #dbd7d2;
+	border: 2px solid grey;
+	text-align: center;
+	font-size: 14px;
+	font-family: Verdana;
+	border-radius: 5px;
+	float:left;
+	position: relative;
+}
+.knopka:hover {
+	height: 20px;
+	width: 75px;
+	background-color: #d0e3f7;
+	border: 2px solid white;
+	text-align: center;
+	font-size: 14px;
+	font-family: Verdana;
+	border-radius: 5px;
+	float:left;
+	position: relative;
+}
+
+/* Стиль текста Полное описание */
+.text_style2 {
+	color: #484343;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight:400;
+	text-align: left;
+}
+/* Первая буква параграфа */
+.text_style2:first-letter {
+	color: #556B2F;
+	font-size: 17px;
+	font-style: Italic;
+	font-family: Arial;	
+}
+
+/* Стиль текста Характеристики */
+.menu2 li {
+	color: #484444;
+	font-style: Italic;
+	font-family: Arial;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+/* Иконки в списке Характеристики */
+.menu2 {
+	list-style-image: url("../img/spisok.jpg");
+}
+
+/* Рамка у картинок в каталоге товаров При наведении курсора становится прозрачной */
+.ramka:hover {
+	border: 2px solid transparent;
+}
+.ramka {
+	border: 2px solid #778899;
+}
+
+/* Стиль таблиц в разделе Характеристики */
+table{
+	border: 2px solid #eaeaea;
+	border-collapse: collapse;
+}
+td{
+	border: 2px solid #eaeaea;
+	text-align: center;
+	
+}
+
+/* Стиль текста в Полях Напишите нам - стр. Контакты */
+input {
+	color: black;
+	font-style: Italic;
+	font-family: Calibri;
+	font-size: 14px;
+	border: 2px solid #eaeaea width: 90%;
+	width: 18%;
+	height: 10%;
+	text-transform: capitalize;
+}
+
+/* Стиль заголовка Контакты */
+.contacts{
+	margin-top: 5px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+/* Стиль поля Email при наведении курсора меняет цвет поля и шрифта */
+.email_color:focus{
+	background-color: #F5F5DC;
+	color: blue;
+}	
+
+/* Стиль поля Сообщение */
+textarea {
+	color: black;
+	font-style: Italic;
+	font-family: Calibri;
+	font-size: 14px;
+	border: 2px solid #eaeaea width: 90%;
+	width: 465px;
+	height: 120px;
+	text-transform: capitalize;
+}
