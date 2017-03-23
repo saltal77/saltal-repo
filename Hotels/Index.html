@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Отели & Отдых</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <style>
+        body {
+            background-image: url(fon.jpg);
+            background-position: top;
+            background-repeat: no-repeat;
+        }
+        h3, div{
+            font-style: italic;
+            color: white;
+            font-family: "Candara", "sans-serif";
+            text-shadow: 1px 1px 2px #072d40, 0 0 1em #072d40;
+        }
+    </style>
+</head>
+<body>
+<h3>Отель отдыха вашей мечты</h3>
+<hr>
+<fieldset>
+    <label>Страна:</label><br/>
+    <select name = 'country'>
+        <option>Все</option>
+        <option >Россия</option>
+        <option >Египет </option>
+        <option >Турция</option>
+        <option >Греция</option>
+        <option >Мальдивы</option>
+        <option >Латвия</option>
+        <option >Черногория</option>
+        <option >Украина</option>
+    </select><br/>
+    <label>Количество звезд:</label><br/>
+    <select name = 'stars'>
+        <option>Звезды</option>
+        <option >1</option>
+        <option >2</option>
+        <option >3</option>
+        <option >4</option>
+        <option >5</option>
+    </select><br/>
+    <label>Рейтинг:</label><br/>
+    <select name = 'rate'>
+        <option>Выберите рейтинг</option>
+        <option >1</option>
+        <option >2</option>
+        <option >3</option>
+        <option >4</option>
+        <option >5</option>
+    </select><br/>
+    <label>Цена:</label><br/>
+    <input name ="cena" type="text" placeholder="1000"><br/>
+</fieldset>
+<hr>
+<button id = 'submit'>Поиск Отеля</button>
+<hr>
+<div id = 'result'></div><br/>
+<script src="js/hotels_list.js"></script>
+<script>
+    /*author - saltal*/
+    var PartData = document.querySelectorAll('select');
+    //Вывод текстовых подсказок в нижней строке
+    function insertText(text){
+        return document.getElementById("result").innerHTML = text;
+    }
+    //Функция проверки выбора звезд и рейтинга отеля
+    function Check(){
+        insertText('');
+        if(PartData[2].value === 'Выберите рейтинг'){
+            insertText("Необходимо выбрать рейтинг");
+            return false;
+        }
+        if(PartData[1].value === 'Звезды'){
+            insertText("Необходимо выбрать количество звезд");
+            return false;
+        }
+        return true;
+    }
+   //Функция вывода подсказок для полей ввода
+    function selectorFocus(text, func, param){
+        return document.querySelector(text).onfocus = function(){
+            func(param);
+
+        }
+    }
+    //Блок подсказкок для полей ввода
+    selectorFocus('fieldset select[name = country]',insertText, "Куда хотите?");
+    selectorFocus('fieldset select[name=stars]',insertText, "Сколько хотите звезд?");
+    selectorFocus('fieldset select[name=rate]',insertText, "Рейтинг Отеля");
+    selectorFocus('fieldset input[name=cena]',insertText, "Стоимость в руб./сутки");
+    //Функция поиска и вывода информации в нижней строке
+    function Find(){
+        var Data = document.querySelectorAll('select');
+        var cena = +document.querySelector('fieldset input[name=cena]').value;
+        var star = +Data[1].value;
+        var rate = +Data[2].value;
+        if(Data[0].value === 'Все'){var strana = '';}
+        else{var strana =  Data[0].value;}
+    var list = [];
+        //Функция - проверка отелей по выбранным параметрам
+   hotels.forEach(function (value) {
+       if (strana){if (value.stars == star && value.rating >= rate && value.price <= cena && value.country === strana){
+           list.push("<br/>" + value.country + "&nbspотель: " + value.title + ",&nbspрейтинг: " + value.rating + ",&nbspстоимость: " + value.price + "&nbspруб./сутки");
+
+       }
+       }
+       else {
+           if (value.stars <= star && value.rating >= rate && value.price <= cena){
+               list.push("<br/>" + value.country + "&nbspотель: " + value.title + ",&nbspрейтинг: " + value.rating + ",&nbspстоимость: " + value.price + "&nbspруб./сутки");
+           }
+       }
+   });
+        //Функция - проверка - найдены ли отели
+   if(list.length){
+       insertText(list);
+   }
+   else{insertText("Ничего не найдено...");
+   }
+    }
+    //Функция вывода на экран результатов поиска отеля с проверкой поля цена
+    document.getElementById('submit').onclick = function(){
+       //Опрос поля цена
+        var stoim = +document.querySelector('fieldset input[name=cena]').value;
+        if (stoim ==''){
+            insertText("Необходимо ввести стоимость  Отеля за сутки");
+        }
+        else if(isNaN(stoim)){
+            insertText("Введенная стоимость не число");
+        }
+        else {
+            if(Check()){
+                Find();
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
