@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inform Olimpiya</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <style>
+    body {
+      background-color: #f1f4f4;
+      background-image: url(fon.png);
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
+    .names{
+      text-transform: capitalize;
+    }
+  </style>
+</head>
+<body>
+<h3>Анкета участника олимпиады по программированию "Inform Olimpiya"</h3>
+<hr>
+<fieldset>
+  <label>Имя:</label><br/>
+  <input name ="firstname" type="text" class = "names"><br/>
+  <label>Фамилия:</label><br/>
+  <input name ="secndname" type="text" class = "names"><br/>
+  <label>Возраст:</label><br/>
+  <input name ="age" type="text"><br/>
+  <label>e-mail:</label><br/>
+  <input name ="email" type="text"><br/>
+  <label>Уровень подготовки:</label><br/>
+  <select>
+    <option>Выберите ваш уровень</option>
+    <option >Начинающий </option>
+    <option >Продвинутый </option>
+    <option >Профессионал</option>
+    <option >Гуру</option>
+  </select><br/>
+  <label>Язык программирования:</label><br/>
+  <input name ="lang" type="text" class = "names"><button id = 'plus'>+</button><br/>
+  <label>Ранее участвовал</label><br/>
+  <input type="checkbox" name="beornot"><br/>
+</fieldset>
+<hr>
+<button id = 'submit'>Отправить данные</button>
+<div id = 'result'></div><br/>
+<hr>
+<script>
+  /*author - saltal*/
+    //Кнопка - добавить поле ввода -  язык программирования
+    document.getElementById('plus').onclick = function(){
+        var input = document.createElement('input');
+        var minusButton = document.createElement('button');
+        minusButton.innerText = '-';
+        minusButton.onclick = function () {
+            this.previousElementSibling.remove();
+            this.nextElementSibling.remove();
+            this.remove();
+        };
+        input.setAttribute('name', 'lang');
+        input.setAttribute('type', 'text');
+        input.setAttribute('class', 'names');
+        this.parentNode.insertBefore(minusButton, this);
+        this.parentNode.insertBefore(document.createElement('br'), this);
+        this.parentNode.insertBefore(input,this);
+    };
+  //Функции опроса полей на события
+  function selectorKey(text, func){
+      return document.querySelector(text).onkeyup = function(){
+          func(this.value);}
+  }
+  function selectorFocus(text, func, param){
+      return document.querySelector(text).onfocus = function(){
+          func(param);}
+  }
+    //Вывод текстовых подсказок в нижней строке
+    function insertText(text){
+       return document.getElementById("result").innerHTML = text;
+    };
+    //Вывод всей информации о участнике в нижней строке
+    function printData() {
+        var result = document.querySelector('select').value;
+        var allData = document.querySelectorAll('input');
+        for (i = 0 ; i < allData.length - 1; i++){
+            result = result + " , " +  allData[i].value;
+        };
+        var chekingBox = document.querySelector('input[type=checkbox]');
+        if (chekingBox.checked) {
+            result = result + ", ранее участвовал";
+        }
+        insertText("Ваши данные получены:  " + result);
+    };
+    //Проверка заполнения полей
+    function checkValues (value){
+    insertText('');
+    if(value === ''){
+        insertText("Необходимо заполнить все поля");
+    };
+   };
+  //Проверка правильности ввода почты
+  function checkMail(value){
+    insertText('');
+    var re = /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/;
+    if(!re.test(value)){
+        insertText("Необходимо правильно ввести вашу почту");
+    };
+    return re.test(value);
+   };
+   //Проверка правильности ввода поля возраст
+   function ageCheck(value){
+    insertText('');
+    if(isNaN(value)){
+        insertText("Необходимо правильно ввести ваш возраст");
+        return false;
+    };
+    return true;
+   };
+//Блок событий ввода в поля и подсказкок
+  selectorKey('fieldset input[name=firstname]', checkValues);
+  selectorFocus('fieldset input[name=firstname]', insertText, "Поле для ввода имени");
+  selectorKey('fieldset input[name=secndname]', checkValues);
+  selectorFocus('fieldset input[name=secndname]', insertText, "Поле для ввода фамилии" );
+  selectorKey('fieldset input[name=age]', ageCheck);
+  selectorFocus('fieldset input[name=age]', insertText, "Поле для ввода возратса - число ..." );
+  selectorKey('fieldset input[name=email]', checkMail);
+  selectorFocus('fieldset input[name=email]', insertText, "Поле для ввода почты - mail@yourdomain.com" );
+  selectorKey('fieldset input[name=lang]', checkValues);
+  selectorFocus('fieldset input[name=lang]', insertText, "Поле для ввода языка программирования");
+  //Анализ полученных данных из формы
+  function collectData(){
+      var flag = true;
+      var partData = document.querySelectorAll('input');
+      var selectProfi = document.querySelector('select').value;
+      insertText('');
+      for (i = 0 ; i < partData.length - 1; i++){
+          partData[i].style.background = 'none';
+          if (partData[i].value === ''){
+              partData[i].style.background = '#ffffe7';
+              insertText("Необходимо заполнить все поля");
+              flag = false;
+          }
+      }
+      if (selectProfi === 'Выберите ваш уровень'){
+          insertText("Необходимо выбрать ваш уровень подготовки");
+          flag = false;
+      }
+      if (flag && checkMail(partData[3].value) && ageCheck(partData[2].value)){
+          printData();
+      }
+  };
+  document.getElementById('submit').onclick =  collectData;
+</script>
+</body>
+</html>
