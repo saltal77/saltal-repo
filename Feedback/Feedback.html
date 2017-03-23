@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма обратной связи</title>
+  <style>
+    body {
+      background-color: #fffaf5;
+      background-image: url(feedback.png);
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+<fieldset>
+  <label>Город:</label><br/>
+  <select>
+    <option id = 'city'>Выберите ваш Город</option>
+  </select><br/>
+  <label>Имя:</label><br/>
+  <input name ="name" type="text" class = "names" placeholder = "Имя"><br/>
+  <label>Телефон:</label><br/>
+  <input name ="tel" type="text" placeholder = "+7(000)000-0000"><br/>
+  <label>e-mail:</label><br/>
+  <input name ="email" type="text" placeholder = "mail@site.com"><br/>
+  <label>Текст:</label><br/>
+  <textarea rows="5" cols="15" name="text" placeholder = "Ваше сообщение..."></textarea><br/>
+  <button id = 'send'>Отправить</button><br/>
+</fieldset>
+<div id = 'result'></div>
+<script src="js/jquery.js"></script>
+<script>
+  //Получение списка городов для формы с помощью jQuery - AJAX из Json
+    $(document).ready(function () {
+        $.ajax({
+            url: 'town.json',
+            dataType : "json",
+            success: function (data) {
+                $.each(data, function(i, val) {
+                    $('#city').after('<option>' + val.town + '</option>');
+                });
+            }
+        });
+    });
+//Функция проверки формы
+  document.getElementById('send').onclick = function () {
+      //Регулярные выражения для проверки полей
+      var regExpName = /([a-zA-Z]|[\D])/i;
+      var regExpTel = /\+7\(\d{3}\)(\d{3}-\d{4})/i;
+      var regExpEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i;
+      var regExpText = /\w+|\D+/i;
+      //Сбор данных из формы в переменные
+      var data = document.querySelectorAll('fieldset input');
+      var city = document.querySelector('select').value;
+      var text = document.querySelector('fieldset textarea');
+      //Сброс стиля поле ввода при каждой проверке
+      data.forEach(function (item) {
+         item.style.border = '';
+      });
+      text.style.border ='';
+      //Проверка на правильное заполнение и вывод положительного результата
+      if(city !== 'Выберите ваш Город' && regExpName.test(data[0].value)&& regExpTel.test(data[1].value)&&
+          regExpEmail.test(data[2].value)&& regExpText.test(text.value)){
+          document.getElementById("result").innerHTML = 'Ваше сообщение отправлено';
+          //document.querySelector('fieldset').style.display = 'none';
+      }
+      //Блок условий & подсказок в случае не правильного заполнения
+      else{
+          if(city === 'Выберите ваш Город'){
+            document.getElementById("result").innerHTML = 'Не выбран город';
+          }
+          if(!regExpName.test(data[0].value)){
+              document.getElementById("result").innerHTML = 'Имя введено не верно';
+              data[0].style.border = '1px dotted red';
+          }
+          else if(!regExpTel.test(data[1].value)){
+              document.getElementById("result").innerHTML = 'Телефон введен не верно';
+              data[1].style.border = '1px dotted red';
+          }
+          else if(!regExpEmail.test(data[2].value)){
+              document.getElementById("result").innerHTML = 'Почта введена не верно';
+              data[2].style.border = '1px dotted red';
+          }
+          else if(!regExpText.test(text.value)){
+              document.getElementById("result").innerHTML = 'Не введен текст';
+              document.querySelector('fieldset textarea').style.border = '1px dotted red';
+            }
+        }
+    }
+</script>
+</body>
+</html>
