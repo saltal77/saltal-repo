@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лучшие Автотовары</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+</head>
+<body>
+<div class="menu-main"></div>
+<script>
+   /*author - saltal*/
+    /*(Общий)Контейнер любого элемента*/
+    function Container() {
+        this.id = '';
+        this.className = '';
+        this.htmlCode = '';
+    }
+    /* Меню */
+    function Menu(myId, myClass, Name, myItems) {
+        Container.call(this);
+        this.id = myId;
+        this.className = myClass;
+        this.name = Name;
+        this.items = myItems;
+    }
+   /*Пункты Меню*/
+    function MenuItem(href, name) {
+        Container.call(this);
+        this.className = 'menu-item';
+        this.href = href;
+        this.name = name;
+    }
+   /* Наследование меню от Container*/
+    Menu.prototype = Object.create(Container.prototype);
+    Menu.prototype.constructor = Menu;
+   /* Определение метода отрисовки меню*/
+    Menu.prototype.render = function () {
+        var result = '<ul class="' + this.className + '">';
+        for (var item in this.items) {
+            if (this.items[item] instanceof MenuItem) {
+                result += this.items[item].render();
+            }
+        }
+            result += '</ul>';
+         return result;
+    };
+   /*Переопределение метода отрисовки пунктов включая вложенные меню*/
+    Menu.prototype.renderAsList = function () {
+        return '<li class="' + this.className + '">' + this.name + this.render() + '</li>';
+    };
+    /* Наследование Пункты меню от Container*/
+    MenuItem.prototype = Object.create(Container.prototype);
+    MenuItem.prototype.constructor = MenuItem;
+    /*Переопределение метода отрисовки пунктов меню*/
+    MenuItem.prototype.render = function () {
+        return '<li class="' + this.className + '"><a href="' + this.href + '">' + this.name +'</a></li>';
+    };
+   /*  */
+    function AllMenu(myId, myClass, name, myItems) {
+        Menu.call(this, myId, myClass, name, myItems);
+    }
+    /* Наследование от  Menu*/
+    AllMenu.prototype = Object.create(Menu.prototype);
+    AllMenu.prototype.constructor = AllMenu;
+    /* Полная отрисовка  по параметрам всех пунктов */
+    AllMenu.prototype.render = function () {
+        var result = '';
+        result += '<ul id="' + this.id + '" class="' + this.className + '">';
+        for (var item in this.items) {
+            if (this.items[item] instanceof MenuItem) {
+                result += this.items[item].render();
+            }
+            else if (this.items[item] instanceof Menu) {
+                result += this.items[item].renderAsList();
+            }
+        }
+        result +='</ul>';
+        return result;
+    };
+/* без JSON - AJAX */
+    //var item1 = new MenuItem('/index.html', 'О магазине');
+    //var item2 = new MenuItem('/help.html', 'Помощь');
+    //var item3 = new MenuItem('/private.html', 'Личный кабинет');
+    //var item4 = new MenuItem('/catalog.html', 'Каталог');
+    //var item5 = new MenuItem('/gallery.html', 'Фото галерея');
+    //var item6 = new MenuItem('/sale.html', 'Акции');
+    //var item7 = new MenuItem('/info.html', 'Подробная информация');
+    //var item8 = new MenuItem('/route.html', 'Как добраться');
+    //var item9 = new MenuItem('/mail.html', 'Напишите нам');
+    //var subMenu1 = new Menu('sub-menu', 'myMenu', 'Товары', [item4, item5, item6]);
+    //var subMenu2 = new Menu('sub-menu', 'myMenu', 'Контакты', [item7, item8, item9]);
+    //var menuList = new AllMenu('Menu', 'myMenu', '',  [item1, subMenu1, item2, item3, subMenu2 ]);
+    //document.writeln(menuList.render());
+    /* Запрос AJAX с проверкой таймаута ответа сервера - 10 сек. */
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'itemslist.json', true);
+    xhr.timeout = 10000;
+    xhr.ontimeout = function () {
+        console.log('Время выполнения запроса истекло!');
+    };
+    xhr.send();
+    /* Заполнение пунктов по параметрам из JSON с проверкой ответа сервера и отрисовкой всего меню */
+    xhr.onreadystatechange = function () {
+        if(xhr.status == '200' && xhr.readyState == '4') {
+            var items = JSON.parse(xhr.responseText);
+            var itemsForMenu = [];
+            items.forEach(function (value) {
+                itemsForMenu.push(new MenuItem(value.href, value.title));
+            });
+            var subMenu1 = new Menu('sub-menu', 'myMenu', 'Товары', [itemsForMenu[3], itemsForMenu[4], itemsForMenu[5]]);
+            var subMenu2 = new Menu('sub-menu', 'myMenu', 'Контакты', [itemsForMenu[6], itemsForMenu[7], itemsForMenu[8]]);
+            var menuList = new AllMenu('Menu', 'myMenu', '',  [itemsForMenu[0], subMenu1, itemsForMenu[1], itemsForMenu[2], subMenu2]);
+            var container = document.getElementsByClassName('menu-main')[0];
+            container.innerHTML = menuList.render();
+        }
+    };
+</script>
+</body>
+</html>

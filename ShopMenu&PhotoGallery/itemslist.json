@@ -1,0 +1,11 @@
+[
+ {"href": "index.html", "title": "О магазине"},
+ {"href": "help.html", "title": "Помощь"},
+ {"href": "private.html", "title": "Личный кабинет"},
+ {"href": "catalog.html", "title": "Каталог"},
+ {"href": "gallery.html", "title": "Фото галерея"},
+ {"href": "sale.html", "title": "Акции"},
+ {"href": "info.html", "title": "Подробная информация"},
+ {"href": "route.html", "title": "Как добраться"},
+ {"href": "mail.html", "title": "Напишите нам"}
+]

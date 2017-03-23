@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Фотогалерея автотоваров</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+</head>
+<body>
+<div class="galery-main"></div>
+<script>
+    /*author-saltal*/
+    /*(Общий)Контейнер элемента картинка*/
+    function Picture(href, src, alt) {
+        this.className = 'picture';
+        this.href = href;
+        this.src = src;
+        this.alt = alt;
+    };
+   /*Отрисовка картинки*/
+    Picture.prototype.render = function () {
+        return '<a href="' + this.href + '"><img src="' + this.src + '"alt="' + this.alt +'"/></a>';
+    };
+   /* Контейнер для списка картинок*/
+    function PicturesList(myItems) {
+        Picture.call(this);
+        this.items = myItems;
+    };
+   /* Наследование списка контейнера список картинок от Picture*/
+  PicturesList.prototype = Object.create(Picture.prototype);
+  PicturesList.prototype.constructor = PicturesList;
+   /* Функция отрисовки картинок списком*/
+  PicturesList.prototype.renderAll = function(){
+        var result = '';
+        for (var item in this.items){
+            result += this.items[item].render();
+        }
+        return result;
+    };
+    /* без JSON - AJAX */
+    // var pic1 = new Picture('./img/Razvetvitel.jpg', './img/small_Razvetvitel.jpg', 'Разветвитель');
+    //var pic2 = new Picture('./img/Derzhatel.jpg', './img/small_Derzhatel.jpg', 'Держатель');
+    //var listPict = new PicturesList([pic1, pic2]);
+    //var piccontainer = document.getElementsByClassName('galery-main')[0];
+    //piccontainer.innerHTML = listPict.renderAll();
+    /* Запрос AJAX с проверкой таймаута ответа сервера - 10 сек. */
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'pictlist.json', true);
+    xhr.timeout = 10000;
+    xhr.ontimeout = function () {
+        console.log('Время выполнения запроса истекло!');
+    };
+    xhr.send();
+    /* Заполнение объектов картинок по параметрам из JSON с проверкой ответа сервера и отрисовкой всего списка */
+    xhr.onreadystatechange = function () {
+        if(xhr.status == '200' && xhr.readyState == '4') {
+            var items = JSON.parse(xhr.responseText);
+            var itemsForGalery = [];
+            items.forEach(function (value) {
+                itemsForGalery.push(new Picture(value.href, value.src, value.alt));
+            });
+            var listPict = new PicturesList([itemsForGalery[0], itemsForGalery[1], itemsForGalery[2],
+            itemsForGalery[3],itemsForGalery[4],itemsForGalery[5]]);
+            var piccontainer = document.getElementsByClassName('galery-main')[0];
+            piccontainer.innerHTML = listPict.renderAll();
+        }
+    };
+</script>
+</body>
+</html>
