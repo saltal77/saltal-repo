@@ -1,1 +1,0 @@
-Feedback us.html - форма обратной связи с проверкой полей ввода (Regexp,jQuery, jQueryUI, AJAX), подгружает данные в поле город из JSON, Использованы виджеты jQueryUI autocomplete, datepicker, dialog + rcarousel 
