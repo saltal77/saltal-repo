@@ -61,7 +61,7 @@
 <script src="js/hotels_list.js"></script>
 <script>
     /*author - saltal*/
-    var PartData = document.querySelectorAll('select');
+    var partData = document.querySelectorAll('select');
     //Вывод текстовых подсказок в нижней строке
     function insertText(text){
         return document.getElementById("result").innerHTML = text;
@@ -69,11 +69,11 @@
     //Функция проверки выбора звезд и рейтинга отеля
     function Check(){
         insertText('');
-        if(PartData[2].value === 'Выберите рейтинг'){
+        if(partData[2].value === 'Выберите рейтинг'){
             insertText("Необходимо выбрать рейтинг");
             return false;
         }
-        if(PartData[1].value === 'Звезды'){
+        if(partData[1].value === 'Звезды'){
             insertText("Необходимо выбрать количество звезд");
             return false;
         }
@@ -93,19 +93,20 @@
     selectorFocus('fieldset input[name=cena]',insertText, "Стоимость в руб./сутки");
     //Функция поиска и вывода информации в нижней строке
     function Find(){
-        var Data = document.querySelectorAll('select');
+        var data = document.querySelectorAll('select');
         var cena = +document.querySelector('fieldset input[name=cena]').value;
-        var star = +Data[1].value;
-        var rate = +Data[2].value;
-        if(Data[0].value === 'Все'){var strana = '';}
-        else{var strana =  Data[0].value;}
+        var star = +data[1].value;
+        var rate = +data[2].value;
+        if(data[0].value === 'Все'){var strana = '';}
+        else{var strana =  data[0].value;}
     var list = [];
         //Функция - проверка отелей по выбранным параметрам
    hotels.forEach(function (value) {
-       if (strana){if (value.stars == star && value.rating >= rate && value.price <= cena && value.country === strana){
+       if (strana){
+	   if (value.stars == star && value.rating >= rate && value.price <= cena && value.country === strana){
            list.push("<br/>" + value.country + "&nbspотель: " + value.title + ",&nbspрейтинг: " + value.rating + ",&nbspстоимость: " + value.price + "&nbspруб./сутки");
 
-       }
+        }
        }
        else {
            if (value.stars <= star && value.rating >= rate && value.price <= cena){
