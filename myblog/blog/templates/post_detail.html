@@ -1,0 +1,11 @@
+<!-- Шаблон расширенной версии Поста -->
+{% extends "base.html"%}
+{%  block content %}
+
+<h2>{{ post.title }}</h2>
+<p>{{ post.text|linebreaks }}</p>
+<p>{{ post.create_date }}</p>
+<p>{{ post.author }}</p>
+<a href ="{% url 'post_list' %}">Назад</a>
+
+{%  endblock content %}
