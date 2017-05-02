@@ -32,7 +32,7 @@ user_end = ["json","csv"]
 sqlbase = 'wth.db'
 
 #Проверка формата файла
-if  f_format != user_end[0] and f_format != user_end[1]:
+if  f_format not in user_end:
     print("Необходимо правильно ввести формат файла csv или json...")
     sys.exit()
 
@@ -52,7 +52,6 @@ def json_bkp(req, f_name):
     conn = sqlite3.connect(sqlbase)
     cur = conn.cursor()
     cur.execute(req)
-    conn.commit()
     json_string = json.dumps(cur.fetchall())
     with open(filename, 'w', encoding='UTF-8', ) as f:
         json.dump(json_string, f, ensure_ascii=False)
@@ -70,7 +69,6 @@ def csv_bkp(req, f_name):
     conn = sqlite3.connect(sqlbase)
     cur = conn.cursor()
     cur.execute(req)
-    conn.commit()
     csvWriter = csv.writer(open(filename, "w"))
     rows = cur.fetchall()
     for row in rows:
@@ -84,7 +82,6 @@ if town_name:
     conn = sqlite3.connect(sqlbase)
     cur = conn.cursor()
     cur.execute(find)
-    conn.commit()
     if cur.fetchall():
         print("Город найден в базе данных, выгружаю данные")
         if f_format == 'json':
@@ -109,7 +106,6 @@ else:
     conn = sqlite3.connect(sqlbase)
     cur = conn.cursor()
     cur.execute(find)
-    conn.commit()
     if cur.fetchall():
         #print("Данные выгружаются...")
         if f_format == 'json':
