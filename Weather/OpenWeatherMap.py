@@ -32,7 +32,7 @@ with open('city.list.json', 'r', encoding='UTF-8') as f:
     for line in f:
         data = f.readlines()
 
-all_towns = dict()
+all_towns = {}
 for towns in data:
     town_dict = json.loads(towns)
     all_towns[town_dict['_id']] = dict(name=town_dict['name'],\
