@@ -1,0 +1,113 @@
+# coding: utf-8
+__author__ = "saltal"
+
+Тестирование некоторых методов класса Car
+
+импортируем Car из MAuto.py
+
+>>> from libs.MAuto import Car
+
+Создаем экземпляр класса
+>>> M_Car = Car(2010, 'серый', 'Jaguar', 'седан', 200, 'бензин', 'Великобритания', 400, 1)
+
+Тестирование метода печати экземпляра класса
+>>> print(M_Car)
+Jaguar, цвет серый, седан 2010 год, 200 л.с., двигатель бензин, страна производства Великобритания, стоимость 400 т.руб. 1
+
+Тесирование метода - продано ли авто. При ответе == 1 - не продано
+>>> M_Car.get_buyed()
+1
+
+Тестирование на различные варианты ввода не корректных данных
+
+>>> M_Car.get_buyed(1)
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[4]>", line 1, in <module>
+    M_Car.get_buyed(1)
+TypeError: get_buyed() takes 1 positional argument but 2 were given
+
+Тестирование метода - продать авто
+>>> M_Car.set_buyed(2)
+'Успешно'
+
+Тестирование на различные варианты ввода не корректных данных
+
+>>> M_Car.set_buyed(-2)
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[6]>", line 1, in <module>
+    M_Car.set_buyed(-2)
+  File "MAuto.py", line 78, in set_buyed
+    raise Exception('ID покупателя не может быть менее или равен нулю')
+Exception: ID покупателя не может быть менее или равен нулю
+
+>>> M_Car.set_buyed('')
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[7]>", line 1, in <module>
+    M_Car.set_buyed('')
+  File "MAuto.py", line 77, in set_buyed
+    if newBuyed <= 0 or not newBuyed:
+TypeError: unorderable types: str() <= int()
+
+Тестирование метода - узнать страну производства авто
+>>> M_Car.get_country()
+'Великобритания'
+
+Тестирование на различные варианты ввода не корректных данных
+
+>>> M_Car.get_country(1)
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[9]>", line 1, in <module>
+    M_Car.get_country(1)
+TypeError: get_country() takes 1 positional argument but 2 were given
+
+Тестирование метода  - задать страну производства авто
+>>> M_Car.set_country('США')
+'Успешно'
+
+Тестирование на различные варианты ввода не корректных данных
+
+>>> M_Car.set_country('')
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[11]>", line 1, in <module>
+    M_Car.set_country('')
+  File "MAuto.py", line 62, in set_country
+    raise Exception('Название страны не может быть пустым или сотоять из цифр')
+Exception: Название страны не может быть пустым или сотоять из цифр
+
+>>> M_Car.set_country('12345')
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[12]>", line 1, in <module>
+    M_Car.set_country('12345')
+  File "MAuto.py", line 62, in set_country
+    raise Exception('Название страны не может быть пустым или сотоять из цифр')
+Exception: Название страны не может быть пустым или сотоять из цифр
+
+>>> M_Car.set_country(12)
+Traceback (most recent call last):
+  File "C:\Python34\lib\doctest.py", line 1318, in __run
+    compileflags, 1), test.globs)
+  File "<doctest Doctests.txt[13]>", line 1, in <module>
+    M_Car.set_country(12)
+  File "MAuto.py", line 61, in set_country
+    if newCountry.isdigit() or not newCountry:
+AttributeError: 'int' object has no attribute 'isdigit'
+
+Тестирование метода - выяснить год производства авто
+>>> M_Car.get_year
+2010
+
+
+
+
