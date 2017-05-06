@@ -31,6 +31,7 @@ class Car_dealership:
         # except Error as e:
         #     print(e)
     # метод закрывающий подключение к базе данных
+
     def stop_con(self):
         conn = mysql.connector.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         conn.close()
@@ -44,18 +45,17 @@ class Car_dealership:
             c.execute(sql)
             print("<:o:o:>  Cписок клиентов Дилерского центра <:o:o:>")
             rows = c.fetchall()
-            lst = []
             for row in rows:
                 decoded_row = tuple([el.decode('utf-8') if type(el) is bytearray else el for el in row])
                 client = Person(decoded_row[0], decoded_row[1], decoded_row[2])
-                lst.append(decoded_row)
                 print(client)
-            conn.close()
+            return 'Успешно'
+
         except Error as e:
             print(e)
 
     def add_Client(self, name, adress, tel):
-        if (not name or not adress or not tel):
+        if not name or not adress or not tel or name.isdigit() or adress.isdigit():
             raise Exception('Внимание! Имя || Адрес || Телефон не могут быть пустыми.')
         try:
             sql = 'INSERT INTO client (name, adress, tel) VALUES (%s,%s,%s)'
@@ -64,13 +64,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, args)
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('add_Client - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def update_Client(self, adress, tel, id):
-        if (not adress or not tel or id <= 0):
+        if not adress or not tel or id <= 0:
             raise Exception('Внимание! Адрес || Телефон не могут быть пустыми, id не может быть менее или равен нулю')
         try:
             sql = "UPDATE client SET adress = %s, tel = %s WHERE id_client = %s"
@@ -78,13 +78,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (adress, tel, id))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('update_Client - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def get_Client(self, id):
-        if (id <= 0):
+        if id <= 0:
             raise Exception('Внимание! Id не может быть менее или равен нулю')
         try:
             sql = "SELECT name, adress, tel  FROM client WHERE id_client = %s"
@@ -97,14 +97,14 @@ class Car_dealership:
                     decoded_row = tuple([el.decode('utf-8') if type(el) is bytearray else el for el in row])
                     client = Person(decoded_row[0], decoded_row[1], decoded_row[2])
                     print(client)
+                return 'Успешно'
             else:
                 print('Внимание! Клиент c Id#', id,'не найден.')
-                conn.close()
         except Error as e:
             print(e)
 
     def del_Client(self, id):
-        if (id <= 0):
+        if id <= 0:
             raise Exception('Внимание! Id не может быть менее или равен нулю')
         try:
             sql = "DELETE FROM client WHERE id_client = %s"
@@ -112,8 +112,8 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (id,))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('del_Client - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
@@ -141,7 +141,7 @@ class Car_dealership:
                 lorry = Lorry(decoded_row[0], decoded_row[1], decoded_row[2], decoded_row[3], decoded_row[4],
                            decoded_row[5], decoded_row[6], decoded_row[7], decoded_row[8], decoded_row[9])
                 print(lorry)
-            conn.close()
+            return 'Успешно'
         except Error as e:
             print(e)
 
@@ -172,12 +172,12 @@ class Car_dealership:
                 print(lorry)
                 print('Покупатель:')
                 self.get_Client(decoded_row[8])
-            conn.close()
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def sell_Car(self, id_buyer, id_car):
-        if (id_buyer <= 0 or id_car <= 0):
+        if id_buyer <= 0 or id_car <= 0:
             raise Exception('Внимание! Id покупателя || Id автомобиля не может быть менее нуля')
         try:
             sql = 'UPDATE car SET buyed = %s WHERE id_car = %s'
@@ -185,13 +185,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (id_buyer, id_car))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('sell_Car - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def sell_Lorry(self, id_buyer, id_lorry):
-        if (id_buyer <= 0 or id_lorry <= 0):
+        if id_buyer <= 0 or id_lorry <= 0:
             raise Exception('Внимание! Id покупателя || Id автомобиля не может быть менее нуля')
         try:
             sql = 'UPDATE lorry SET buyed = %s WHERE id_lorry = %s'
@@ -199,14 +199,14 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (id_buyer, id_lorry))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('sell_Lorry - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def add_Car(self, year, color, model, a_type, power, fuel, country, price, buyed):
-        if (year <= 0 or not color or not model or not a_type or power <= 0 or not fuel or not country or
-                    price <= 0 or buyed < 0):
+        if year <= 0 or not color or not model or not a_type or power <= 0 or not fuel or not country or price <= 0 or buyed < 0\
+             or color.isdigit() or model.isdigit() or a_type.isdigit() or fuel.isdigit() or country.isdigit():
             raise Exception('Внимание! Проверьте правильность ввода данных авто')
         try:
             sql = 'INSERT INTO car (year, color, model, a_type, power, fuel, country,' \
@@ -216,14 +216,14 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, args)
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('add_Car - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def add_Lorry(self, year, color, model, a_type, power, fuel, country, price, buyed, cargo):
-        if (year <= 0  or not color or not model or not a_type or power <= 0 or not fuel or not country or
-                    price <= 0 or buyed < 0 or cargo <= 0):
+        if year <= 0 or not color or not model or not a_type or power <= 0 or not fuel or not country or price <= 0 or buyed < 0 or cargo <= 0 \
+                or color.isdigit() or model.isdigit() or a_type.isdigit() or fuel.isdigit() or country.isdigit():
             raise Exception('Внимание! Проверьте правильность ввода данных авто')
         try:
             sql = 'INSERT INTO lorry (year, color, model, a_type, power, fuel, country,' \
@@ -233,13 +233,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, args)
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('add_Lorry - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def del_Car(self, id):
-        if (id <= 0):
+        if id <= 0:
             raise Exception('Внимание! Id авто не может быть менее или равен нулю')
         try:
             sql = "DELETE FROM car WHERE id_car = %s"
@@ -247,13 +247,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (id,))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('del_Car - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def del_Lorry(self, id):
-        if (id <= 0):
+        if id <= 0:
             raise Exception('Внимание! Id авто не может быть менее или равен нулю')
         try:
             sql = "DELETE FROM lorry WHERE id_lorry = %s"
@@ -261,13 +261,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (id,))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('del_Lorry - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def search_Cars(self, name):
-        if (not name):
+        if not name:
             raise Exception('Внимание! Название не может быть пустым')
         try:
             sql_car = 'SELECT year, color, model, a_type, power, fuel, country, price, buyed  FROM car where model = %s'
@@ -293,14 +293,14 @@ class Car_dealership:
                     lorry = Lorry(decoded_row[0], decoded_row[1], decoded_row[2], decoded_row[3], decoded_row[4],
                                decoded_row[5], decoded_row[6], decoded_row[7], decoded_row[8], decoded_row[9])
                     print(lorry)
+                return 'Успешно'
             else:
                 print('грузовые --> не найдено...')
-                conn.close()
         except Error as e:
             print(e)
 
     def update_Car_price(self, price, id):
-        if (price <= 0 or id <= 0):
+        if price <= 0 or id <= 0 or not price or not id:
             raise Exception('Внимание! Цена || Id авто не могут быть менее или равны нулю')
         try:
             sql = "UPDATE car SET price = %s WHERE id_car = %s"
@@ -309,13 +309,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (price, id))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('update_Car_price - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def update_Lorry_price(self, price, id):
-        if (price <= 0 or id <= 0):
+        if price <= 0 or id <= 0 or not price or not id:
             raise Exception('Внимание! Цена || Id авто не могут быть менее или равны нулю')
         try:
             sql = "UPDATE lorry SET price = %s WHERE id_lorry = %s"
@@ -323,13 +323,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (price, id))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('update_Lorry_price - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def update_Car_Color(self, color, id):
-        if (not color or id <= 0):
+        if not color or id <= 0 or color.isdigit():
             raise Exception('Внимание! Цвет не может быть пусым || Id авто не может быть менее или равен нулю')
         try:
             sql = "UPDATE car SET color = %s WHERE id_car = %s"
@@ -337,13 +337,13 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (color, id))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('update_Car_Color - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
 
     def update_Lorry_Color(self, color, id):
-        if (not color or id <= 0):
+        if not color or id <= 0 or color.isdigit():
             raise Exception('Внимание! Цвет не может быть пусым || Id авто не может быть менее или равен нулю')
         try:
             sql = "UPDATE lorry SET color = %s WHERE id_car = %s"
@@ -351,7 +351,7 @@ class Car_dealership:
             c = conn.cursor()
             c.execute(sql, (color, id))
             conn.commit()
-            print('Успешно...')
-            conn.close()
+            print('update_Lorry_Color - Успешно...')
+            return 'Успешно'
         except Error as e:
             print(e)
