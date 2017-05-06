@@ -26,53 +26,71 @@ class Car:
     @property
     def get_year(self):
         return self.year
+
     def set_year(self, newYear):
         self.year = newYear
 
     def get_color(self):
         return self.color
+
     def set_color(self, newColor):
         self.color = newColor
+
     @property
     def get_model(self):
         return self.model
+
     def set_model(self, newModel):
         self.model = newModel
+
     @property
     def get_type(self):
         return self.a_type
+
     def set_type(self, newType):
         self.a_type = newType
 
     def get_power(self):
         return self.power
+
     def set_power(self, newPower):
         self.power = newPower
 
     def get_fuel(self):
         return self.fuel
+
     def set_fuel(self, newFuel):
         self.fuel = newFuel
 
     def get_country(self):
         return self.country
+
     def set_country(self, newCountry):
+        if newCountry.isdigit() or not newCountry:
+            raise Exception('Название страны не может быть пустым или сотоять из цифр')
         self.country = newCountry
+        return 'Успешно'
+
     @property
     def get_price(self):
         return self.price
+
     def set_price(self, newPrice):
         self.price = newPrice
 
     def get_buyed(self):
         return self.buyed
+
     def set_buyed(self, newBuyed):
+        if newBuyed <= 0 or not newBuyed:
+            raise Exception('ID покупателя не может быть менее или равен нулю')
         self.buyed = newBuyed
+        return 'Успешно'
 
     def __str__(self):
         return '{}, цвет {}, {} {} год, {} л.с., двигатель {}, страна производства {}, ' \
-               'стоимость {} т.руб.'.format(self.model, self.color, self.a_type, self.year, self.power, self.fuel,
-                self.country, self.price)
+               'стоимость {} т.руб. {}'.format(self.model, self.color, self.a_type, self.year, self.power, self.fuel,
+                self.country, self.price, self.buyed)
 
 class Lorry(Car):
     """
@@ -85,9 +103,11 @@ class Lorry(Car):
         self.cargo = cargo
         if (cargo < 0):
             raise Exception('Внимание! грузоподъемность не может быть менее нуля')
+
     @property
     def get_cargo(self):
         return self.cargo
+
     def set_cargo(self, newCargo):
         self.cargo = newCargo
 
