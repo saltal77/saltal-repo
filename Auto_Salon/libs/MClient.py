@@ -20,13 +20,17 @@ class Person:
 
     def __str__(self):
         return '{}, Адрес: {}, Телефон: {}'.format(self.name, self.adress, self.tel)
+
     @property
     def get_tel(self):
         return self.tel, self.name
+
     def set_tel(self, newTel):
         self.tel = newTel
+
     @property
     def get_adress(self):
         return self.adress
+
     def set_adress(self, newAdress):
         self.adress = newAdress
