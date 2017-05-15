@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{% block title %}
+Работа
+{% endblock%}
+
+{% block images %}
+<img src="/static/img/worker.jpg" alt='Ответсвенный работник'>
+{% endblock %}
+
+{% block shorth3 %}
+Как и где...
+{% endblock %}
+
+{% block content %}
+<ul class="listing">
+    {% if jobs %}
+    {% for job in jobs %}
+    {% if job.display %}
+    <li>
+        {{ job.year_on}} - {{ job.year_off}}<br>
+        <a href = "{% url 'jobinfo' job.id %}" >{{ job.orgname }}</a><br>
+        {{ job.position }}<br>
+        {{ job.duties }}<br>
+    </li>
+    <br>
+    {% endif %}
+    {% endfor %}
+
+    {% else %}
+    <li>{{ nodata }}</li>
+
+    {% endif %}
+</ul>
+{% endblock%}
