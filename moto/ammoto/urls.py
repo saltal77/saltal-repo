@@ -6,7 +6,7 @@ from amsite.views import *
 
 urlpatterns = [
     url(r'^$', site_view),
-    url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += [
