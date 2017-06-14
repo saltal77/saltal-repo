@@ -1,0 +1,11 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content4 %}
+<img src="{% static 'img/first.png' %}">
+{% endblock %}
+{% block content8 %}
+{% for inf in info %}
+<p>{{ inf.text }}</p>
+{% endfor %}
+{% endblock %}

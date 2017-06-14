@@ -1,0 +1,15 @@
+{% for user in users %}
+
+    <li id="unmarked">
+        <div class="row">
+            <div class="col-md-1"> {{ user }} </div>
+            <div class="col-md-1"><button type="button" class="btn btn-default" aria-label="Edit"
+                                          onclick="fill_form({{ user.id }})">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </button></div>
+        <div class="col-md-1"><a href="delete/user/{{ user.id }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+        </a></div>
+            </div>
+    </li>
+{% endfor %}

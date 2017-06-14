@@ -1,0 +1,13 @@
+{% extends "base-admins.html" %}
+{% load staticfiles %}
+
+{% block content8 %}
+{% if user.is_authenticated %}
+    <form  method="post", action="" enctype="multipart/form-data">
+        {% include 'inc-register-form.html' %}
+        <input type="submit" value="Сохранить">
+    </form>
+{% else %}
+<p> Необходима авторизация. Войдите под своим Логином. </p>
+{% endif %}
+{% endblock %}

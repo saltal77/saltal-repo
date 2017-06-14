@@ -1,0 +1,38 @@
+
+#unmarked  {
+    list-style-type: none !important;
+   }
+
+div > h1 {
+	font-family: 'Lobster', cursive;
+	color: #334065;
+}
+
+div > h5 {
+	font-family: 'Marck Script', cursive;
+	color: #334065;
+}
+
+.col-md-8 > p {
+	font-family: 'Neucha', cursive;
+	font-size: 18px;
+	color: #334065;
+}
+
+a > p {
+font-family: 'Neucha', cursive;
+	font-size: 18px;
+	color: #334065;
+}
+.maindiv{
+    height: 500px;
+}
+
+.maindiv_adm{
+	height: 500px;
+}
+
+.error{
+    color: #566ca9;
+}
+

@@ -1,0 +1,34 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content8 %}
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+            {{revw.title}}
+        </div>
+    {% if revw.image %}
+   <div class="image">
+           <img src="{{ revw.image.url }}" width="150px"><br>
+   </div>
+    {% endif %}
+        <div class="panel-body">
+            <p>
+        {{ revw.text|linebreaks }}
+            </p>
+            <p>
+                {{ revw.create_date}}  Автор: {{revw.author}}
+            </p>
+            <p>
+                Рейтинг: {{ revw.rating }}
+            </p>
+        </div>
+    </div>
+<a href ="/review/"> <<< назад</a>
+{% endblock %}
+
+{% block content4 %}
+<img src="{% static 'img/speedometr.png' %}">
+{% endblock %}
+

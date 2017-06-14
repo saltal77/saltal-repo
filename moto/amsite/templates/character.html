@@ -1,0 +1,30 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+{% block content4 %}
+<img src="{% static 'img/Wheel.png' %}">
+{% endblock %}
+{% block content8 %}
+<p> Характеристики мото </p>
+
+{% for character in motocharacter %}
+<div class="panel panel-default">
+        <div class="panel-heading">
+            {{character.title }}
+        </div>
+
+        <div class="panel-body">
+            <p>
+                {{character.mark}}
+            </p>
+            <p>
+        {{character.text|truncatewords:50|linebreaks}}
+            </p>
+            <p>
+                Рейтинг Мото: {{character.rating}}
+            </p>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

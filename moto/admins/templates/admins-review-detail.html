@@ -1,0 +1,22 @@
+{% extends "base-admins.html" %}
+{% load staticfiles %}
+
+{% block content8 %}
+{% if user.is_authenticated %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{revw.title}}
+        </div>
+        <div class="panel-body">
+            <p>
+        {{revw.text}}
+            </p>
+            <p>
+                {{revw.author}} *** {{ revw.create_date}}
+            </p>
+        </div>
+    </div>
+{% else %}
+<p> Необходима авторизация. Войдите под своим Логином. </p>
+{% endif %}
+{% endblock %}

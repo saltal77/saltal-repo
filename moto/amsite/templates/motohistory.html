@@ -1,0 +1,25 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+{% load redactor_tag %}
+{% block content4 %}
+<img src="{% static 'img/triumph.jpg' %}">
+{% endblock %}
+{% block content8 %}
+<p> Мотоистории </p>
+{% for story in stories %}
+<div class="panel panel-default">
+        <div class="panel-heading">
+            {{story.title|сhoice }}
+        </div>
+        <div class="panel-body">
+            <p>
+        {{story.text|truncatewords:150|linebreaks}}
+            </p>
+            <p>
+                {{story.author}} *** {{ story.create_date|date}}
+            </p>
+        </div>
+    </div>
+
+{% endfor %}
+{% endblock %}

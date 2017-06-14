@@ -1,0 +1,71 @@
+{% extends "base-admins.html" %}
+{% load staticfiles %}
+
+{% block content8 %}
+{% if user.is_authenticated %}
+<table class="table table-striped">
+        <tr>
+            <th>
+                Список отзывов о Мото
+            </th>
+        </tr>
+        {% for revw in revws %}
+        <tr>
+            <td>
+                <a href="{% url 'admin_review_detail' revw.id %}">{{revw.title}}</a>
+            </td>
+            <td>
+                <a href="{% url 'admin_review_detail' revw.id %}" class="btn btn-default">Подробнее</a>
+            </td>
+            <td>
+                <a href="{% url 'review_update' revw.id %}" class="btn btn-default">Редактировать</a>
+            </td>
+            <td>
+                <form method="post" action="{% url 'review_delete' revw.id %}">
+                    {% csrf_token %}
+                    <button href="{% url 'review_delete' revw.id %}" class="btn btn-info">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-default" href="{% url 'review_create' %}">Добавить</a><br>
+
+{% if is_paginated %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}">
+               <<<
+            </a>
+        {% endif %}
+        <span class="current">
+            {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+                <a href="?page={{i}}">
+                    <b>{{i}}</b>
+                </a>
+            {% else %}
+            <a href="?page={{i}}">
+                    {{i}}
+                </a>
+            {% endif %}
+            {% endfor %}
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">
+                >>>
+            </a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+{% else %}
+<p> Необходима авторизация. Войдите под своим Логином. </p>
+{% endif %}
+
+{% endblock %}
+
+{% block content4 %}
+<img src="{% static 'img/gears.png' %}">
+{% endblock %}

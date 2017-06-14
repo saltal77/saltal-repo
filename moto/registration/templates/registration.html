@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content8 %}
+<p> Войдите на сайт под своим Логином или зарегистрируйтесь </p>
+    <form method="post" role="form" action="/user/registration/">
+                {% include 'inc-register-form.html' %}
+        <input type="submit" class="btn btn-default" value="Создать">
+    </form>
+{% endblock %}
+{% block content4 %}
+<img src="{% static 'img/nomer.png' %}">
+{% endblock %}

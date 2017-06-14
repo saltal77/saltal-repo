@@ -1,0 +1,53 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content4 %}
+<img src="{% static 'img/speedometr.png' %}">
+{% endblock %}
+
+{% block content8 %}
+<p> Отзывы счастливых владельцев </p>
+<div class="row">
+        {% for revw in revws %}
+            <div class="panel panel-info">
+                <div class="panel-heding">
+                     {{ revw.title }}
+                </div>
+                <div class="panel-body">
+                    {{ revw.text|truncatewords:45|linebreaks }}
+                    {% if revw.image %}
+                    <div class="image">
+                        <img src="{{ revw.image.url }}" width="150px"><br>
+                    </div>
+                    {% endif%}
+                    {{ revw.create_date|date }}<br>
+                    Автор: {{ revw.author}}  Байк: {{ revw.mark.name }}
+                    <a href ="{% url 'review_details' revw.id %}">читать далее >></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+<div class="pagination">
+    <span class="step-links">
+        {% if revws.has_previous %}
+            <a href="?page={{revws.previous_page_number}}">
+               <<<
+            </a>
+        {% endif %}
+        <span class="current">
+            {% for i in numbers %}
+            {% if revws.number == i %}
+            <a href="?page={{i}}"><b>{{i}}</b>&nbsp;</a>
+            {% else %}
+            &nbsp;<a href="?page={{i}}">{{i}}&nbsp;</a>
+            {% endif %}
+            {% endfor %}
+        </span>
+        {% if revws.has_next %}
+            <a href="?page={{revws.next_page_number}}">
+                >>>
+            </a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

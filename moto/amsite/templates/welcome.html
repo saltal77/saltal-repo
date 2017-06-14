@@ -1,0 +1,14 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+{% block content4 %}
+<img src="{% static 'img/shlem.png' %}">
+{% endblock %}
+{% block content8 %}
+<p> Доброго времени суток Bro!</p>
+<p> Кое-какие правила... </p>
+<p> Реальные новости </p>
+<p> Крутые прошедшие события </p>
+{% if user.is_staff %}
+<a href="/admins/"><p> Админка </p></a>
+{% endif %}
+{% endblock %}

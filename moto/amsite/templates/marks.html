@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+{% block content4 %}
+{% for desc in descr %}
+<img src="{{ desc.image.url }}">
+{% endfor %}
+{% endblock %}
+
+{% block content8 %}
+<p>  О Марке </p>
+{% for desc in descr %}
+{{ desc.title }}<br>
+{{ desc.text }}<br>
+{% endfor %}
+{% endblock %}
