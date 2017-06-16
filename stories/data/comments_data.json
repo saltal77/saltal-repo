@@ -1,0 +1,45 @@
+[
+  {
+    "postId":4,
+    "id": 1,
+    "name": "Иван В.",
+    "email": "ivan@ya.ru",
+    "comm": "Не плохой рассказ, что тут скажешь"
+  },
+
+  {
+    "postId":3,
+    "id": 2,
+    "name": "Павел А.",
+    "email": "pavel@inbox.ru",
+    "comm": "Очень интересная история..."
+  },
+
+  {
+    "postId":2,
+    "id": 3,
+    "name": "Дмитрий К.",
+    "email": "dmirtry@mail.ru",
+    "comm": "Кажется, что-то подобное я уже слышал."
+  },
+
+  {
+    "postId":1,
+    "id": 4,
+    "name": "Степан К.",
+    "email": "stepan@hotmail.ru",
+    "comm": "Интересно..."
+  },
+
+  {
+    "postId":6,
+    "id": 5,
+    "name": "Вадим И.",
+    "email": "vadim@hotmail.ru",
+    "comm": "Интересный рассказик..."
+  }
+
+  ]
+
+
+

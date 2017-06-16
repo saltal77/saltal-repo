@@ -1,0 +1,103 @@
+.btn-default{
+    background: #F3FAFE !important;
+}
+
+.btn-default:hover {
+    background: #2aabd2 !important;
+    color: white !important;
+}
+
+.col-md-12 > h1 {
+    font-family: 'Pangolin', cursive;
+    color: #0c4d74;
+}
+.col-md-2 > h3, .col-md-12 > h3, .col-md-11 > h3, .col-md-10 > h3 {
+    font-family: 'Marck Script', cursive;
+    color: #0c4d74;
+}
+
+.col-md-11 > p, .col-md-10 > p {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 16px;
+}
+
+.navbar-nav > li {
+font-family: 'Gabriela', serif;
+font-size: 16px;
+}
+
+.navbar-header > a {
+font-family: 'Gabriela', serif;
+font-size: 22px;
+font-weight: bold;
+}
+
+.hist_counter {
+    font-family: 'Marck Script', cursive;
+    color: #0c4d74;
+    font-size: 20px;
+}
+
+.form-stories{
+    margin-top: 30px;
+}
+
+details > summary{
+    font-family: 'Pangolin', cursive;
+    color: #0c4d74;
+    font-size: 16px;
+}
+.form-horizontal{
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.inputForm {
+    font-family: 'Marck Script', cursive;
+    font-size: 24px;
+    font-weight: normal;
+    color: #0c4d74;
+}
+
+.authorinfo  {
+    font-family: 'Arial', serif !important;
+    font-size: 14px !important;
+}
+
+.col-md-11 > a {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 14px;
+}
+
+.fox {
+    background-image: url(../img/lisa.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.col-xs-2, .col-xs-5 {
+    margin-top: 15px;
+}
+
+.btn {
+    margin-top: 15px;
+    float: right;
+}
+
+.modal-footer > span{
+    font-family: 'Marck Script', cursive;
+    color: #0c4d74;
+    font-size: 20px;
+}
+
+body {
+    background-color: #F3FAFE !important;
+    background-image:
+            linear-gradient(90deg, transparent 79px, #E59898 79px, #E59898 81px, transparent 81px),
+            linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+}
+
+.none {
+    display: none;
+}
