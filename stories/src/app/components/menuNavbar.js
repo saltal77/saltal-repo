@@ -5,6 +5,14 @@ import NavLink from './NavLink'
 
 export default class menuNavbar extends Component {
 
+    constructor() {
+        super(...arguments);
+
+        this.state = {
+            user: ''
+        };
+    }
+
     toLogin(){
 
         return <Modal_Window />;
@@ -15,7 +23,20 @@ export default class menuNavbar extends Component {
         return window.location.pathname == href;
     }
 
+    componentWillMount(){
+        localStorage.clear();
+    }
+
+    shouldComponentUpdate() {
+        let user = window.localStorage.getItem('login');
+        this.setState({
+            user: user
+        });
+        return true
+    }
+
     render(){
+
         return (
             <div className="row">
 
@@ -42,6 +63,8 @@ export default class menuNavbar extends Component {
                             <button type="submit" className="btn btn-info" data-toggle="modal" data-target="#blogModal" >Войти</button>
 
                         </div>
+
+                        <span className={this.state.user ? '': 'none'} >Давно не виделись ! {this.state.user}</span>
                     </div>
                 </nav>
 

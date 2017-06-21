@@ -24,8 +24,9 @@ export default class commentForm extends React.Component {
     }
 
     render() {
+        let user = window.localStorage.getItem('login');
         return (
-            <form className="form-horizontal" id="comment-Form">
+            <form className={user ? 'form-horizontal': 'none'} id="comment-Form">
                 <div className="form-group">
                     <div className="col-sm-8" id="col-sm8">
                         <label className="inputForm">Добавить комментарий:</label><br/>

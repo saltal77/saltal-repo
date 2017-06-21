@@ -42,6 +42,7 @@ export default class CommentOne extends React.Component {
     }
 
     render() {
+        let user = window.localStorage.getItem('login');
         return (
             <div className="col-md-11">
                 <h3>{this.props.name}</h3>
@@ -63,8 +64,8 @@ export default class CommentOne extends React.Component {
                 </form>
 
 
-                <button className="btn btn-default" onClick={this.toEdit}>Редактировать</button>
-                <button className="btn btn-default" onClick={this.delCmment}>Удалить</button>
+                <button className={user ? 'btn btn-default': 'none'} onClick={this.toEdit}>Редактировать</button>
+                <button className={user ? 'btn btn-default': 'none'} onClick={this.delCmment}>Удалить</button>
             </div>
         );
     }

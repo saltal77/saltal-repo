@@ -74,6 +74,13 @@ details > summary{
     background-position: bottom right;
     background-repeat: no-repeat;
 }
+.foxfinds {
+    background-image: url(../img/foxfinds.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height:800px;
+    background-size: contain;
+}
 
 .col-xs-2, .col-xs-5 {
     margin-top: 15px;
@@ -85,6 +92,12 @@ details > summary{
 }
 
 .modal-footer > span{
+    font-family: 'Marck Script', cursive;
+    color: #0c4d74;
+    font-size: 20px;
+}
+
+.container-fluid > span {
     font-family: 'Marck Script', cursive;
     color: #0c4d74;
     font-size: 20px;

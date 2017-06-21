@@ -8,12 +8,14 @@ require('./models/modelAuthor');
 require('./models/modelInterest');
 require('./models/modelComments');
 require('./models/modelStories');
+require('./models/modelUsers');
 
 // Маршруты запроса к БД
 let routeAuthor = require('./routes/listauthors');
 let routeInterest = require('./routes/listinterest');
 let routeComments = require('./routes/listcomments');
 let routeStories = require('./routes/liststories');
+let routeUsers = require('./routes/listusers');
 
 
 mongoose.connect('mongodb://localhost:27017/stories');
@@ -41,6 +43,7 @@ app.use('/store/listauthors', routeAuthor);
 app.use('/store/listinterest', routeInterest);
 app.use('/store/listcomments', routeComments);
 app.use('/store/liststories', routeStories);
+app.use('/store/listusers', routeUsers);
 
 // Обработка запросов и ошибок
 app.use(function (req, res, next) {

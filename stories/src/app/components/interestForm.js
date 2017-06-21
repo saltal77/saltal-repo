@@ -20,8 +20,9 @@ export default class interestForm extends React.Component {
     }
 
     render() {
+        let user = window.localStorage.getItem('login');
         return (
-            <form className="form-horizontal" id="interest-Form">
+            <form className={user ? 'form-horizontal': 'none'} id="interest-Form">
                 <div className="form-group">
                     <div className="col-sm-10">
                         <label className="inputForm">Добавить:</label><br/>

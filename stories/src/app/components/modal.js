@@ -1,8 +1,49 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import _ from 'lodash';
 
 
 export default class Modal extends Component
 {
+
+    constructor() {
+        super(...arguments);
+        this.checkLogin = this.checkLogin.bind(this);
+    }
+
+    checkLogin(e) {
+        e.preventDefault();
+        localStorage.clear();
+        let login = e.target.elements[0].value;
+        let pass = e.target.elements[1].value;
+        let users = [];
+        let allow;
+
+        axios
+            .get('../data/users_data.json')
+            //.get('http://localhost:8888/store/listusers')
+            .then((responce) => {
+                let { data } = responce;
+                users = data;
+                allow = _.find(users,{user: login, pass: pass});
+                if(allow){
+                    window.localStorage.setItem('login', login);
+                    this.context.router.push('/welcome');
+                }
+            });
+
+        $('#loginForm')[0].reset();
+        $('#blogModal').attr({
+                'style': 'display: none',
+                'class': 'modal fade'
+        });
+        $('body').attr({
+            'style': '',
+            'class': ''
+        });
+        $( ".modal-backdrop" ).remove();
+    }
+
     render()
     {
         let divStyleModalContent = {
@@ -30,7 +71,7 @@ export default class Modal extends Component
                             <h4 className="modal-title" style={h4StyleModalTitle}>Вход на сайт</h4>
                         </div>
                         <div className="modal-body">
-                            <form className="form-signin" role="form">
+                            <form className="form-signin" id='loginForm' role="form" onSubmit={this.checkLogin}>
                                 <h3 className="form-signin-heading" style={h3StyleFormSigninHeading}>Введите свои данные:</h3>
                                 <input type="text" className="form-control" placeholder="Логин" required/>
                                 <input type="password" className="form-control" placeholder="Пароль" required/>
@@ -46,3 +87,7 @@ export default class Modal extends Component
         );
     }
 }
+
+Modal.contextTypes = {
+     router: React.PropTypes.object.isRequired
+ };

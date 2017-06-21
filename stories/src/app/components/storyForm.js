@@ -31,8 +31,9 @@ export default class Form extends React.Component {
     }
 
     render() {
+        let user = window.localStorage.getItem('login');
         return (
-            <form className="form-horizontal">
+            <form className={user ? 'form-horizontal': 'none'}>
                 <div className="form-group">
                     <div className="col-sm-10">
                 <label className="inputForm">Добавить Историю:</label><br/>

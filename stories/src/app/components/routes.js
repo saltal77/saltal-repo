@@ -9,6 +9,7 @@ import comments from '../pages/Comments'
 import Main from '../pages/Main'
 import AuthorInfo from './AuthorInfo'
 import NotFound from '../pages/notFound404'
+import welcome from '../pages/Welcome'
 
 
 module.exports = (
@@ -21,6 +22,7 @@ module.exports = (
     <Route path='interest' component={interest} />
     <Route path='contacts' component={contacts} />
     <Route path='comments' component={comments} />
+    <Route path='welcome' component={welcome} />
     <Redirect from='/redirect' to="/" />
     <Route path='*' component={NotFound} />
 </Route>
