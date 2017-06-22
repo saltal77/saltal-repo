@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Less</title>
+	<link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Yeseva+One" rel="stylesheet">
+	<style>
+	/*author-saltal*/
+	body {
+		margin: 50px 0;
+		width: 100%;
+		background: url('./img/fon.jpg');
+	}
+	.title {
+		text-align: center;
+    	font-family: 'Yeseva One', cursive;
+    	font-size: 35px;
+    	color: #4E5353;
+    	text-shadow: 2px 2px 0px #eee,
+			         3px 3px 0px #4E5353;
+	}
+	.album {
+		width: 90%;
+		margin: 0 auto;
+	}
+	.album:after {
+		content:'';
+		display: table;
+		clear: both;
+	} 
+	/*Оформление изображений*/
+	.album-item {
+		position: relative;
+		float: left;
+		width: 380px;
+		height: 300px;
+		margin: 20px;
+		padding: 10px;
+		box-sizing: border-box;
+		text-align: center;
+		background: #FDFBF8;
+		box-shadow:  5px 5px 15px gray;
+		-webkit-transition: 1.5s ease;
+		-moz-transition: 1.5s ease;
+		transition: 1.5s ease;
+	}
+	/*Разворот изображений*/
+	.album-item:nth-child(odd) {
+		-webkit-transform: rotate(3deg);
+		-moz-transform: rotate(3deg);
+		transform: rotate(3deg);
+		left: -5px;
+	}
+	.album-item:nth-child(even) {
+		-webkit-transform: rotate(-3deg);
+		-moz-transform: rotate(-3deg);
+		transform: rotate(-3deg);
+		top: -5px;
+	}
+	/*Увеличение при наведении*/
+    .album-item:hover {
+		-webkit-transform: scale(1.5);
+		-moz-transform: scale(1.5);
+		transform: scale(1.5);
+		box-shadow:  15px 15px 35px gray;
+		z-index: 15;
+	}
+	.album-item-image {
+		width: 350px;
+		height: 250px;
+	}
+	/*Блок описания изображения*/
+	.album-item-description {
+		position: absolute;
+		width: 350px;
+		height: 0;
+		overflow: hidden;
+		bottom: 40px;
+		box-sizing: border-box;
+		margin: 0;
+		margin-left: 5px;
+		padding: 0 10px;
+		text-align: center;
+		background: hsla(0,0%,0%,0.5);
+		color: #ccc;
+		font-size: 11px;
+		font-family: 'Jura', sans-serif;
+	}
+    .album-item:hover .album-item-description {
+    	height: 50px;
+    	-webkit-transition: 2s ease;
+    	-moz-transition: 2s ease;
+		transition: 2s ease;
+    }
+    .album-item-caption {
+    	line-height: 30px;
+    	font-weight: bold;
+    	font-family: 'Neucha', cursive;
+    	font-size: 22px;
+    }
+	</style>
+</head>
+<body>
+<div class="title">Мото Фото</div>
+<div class="album">
+	<figure class="album-item">
+	<img src="./img/honda-cb750.jpg"  class="album-item-image">
+	<p class="album-item-description">Европейская версия. Модель отличается классическим внешним видом, двойными передними тормозами и задним дисковым тормозом.</p>
+	<figurecaption class="album-item-caption">Honda CB</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/honda-fx650.jpg"  class="album-item-image">
+	<p class="album-item-description">Изначально модель позиционировала себя как городской мотоцикл с возможностью передвижения по легкому бездорожью и грунтовым дорогам.</p>
+	<figurecaption class="album-item-caption">Honda FX</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/honda-horn1998.jpg"  class="album-item-image">
+	<p class="album-item-description">С английского Hornet – это шершень, это свирепое насекомое, способное доставить немало хлопот. “Шершень” может выдавать очень даже впечатляющие показатели.</p>
+	<figurecaption class="album-item-caption">Honda Hornet</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/suzuki-bandit.jpg"  class="album-item-image">
+	<p class="album-item-description">Название модели вытекает из-за своего необычного поведения в дорожных условиях. Они достаточно мощные для своего класса и одновременно легко управляемы и маневренны.</p>
+	<figurecaption class="album-item-caption">Suzuki Bandit</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/suzuki-gsx250r.jpg"  class="album-item-image">
+	<p class="album-item-description">Модель представляет собой классический спорт-турист для начинающих пилотов - с удобной посадкой и относительно плавной кривой отбора мощности.</p>
+	<figurecaption class="album-item-caption">Suzuki GSX</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/suzuki-gsxr600.jpg"  class="album-item-image">
+	<p class="album-item-description">Данная модель появилась в 1992 году. Причина возникновения - необходимость наличия 600-кубового байка класса "Суперспорт" в линейкe.</p>
+	<figurecaption class="album-item-caption">Suzuki GSXR</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/yamaha-fz8.jpg"  class="album-item-image">
+	<p class="album-item-description">Модель изначально была ориентирована на рынки Северной Америки, Европы, Австралии и Новой Зеландии.</p>
+	<figurecaption class="album-item-caption">Yamaha FZ</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/yamaha-yzfr6.jpg"  class="album-item-image">
+	<p class="album-item-description">YZF-R6 изначально показывает рекордные характеристики оборотистости двигателя - 17500 об/мин. При этом "отсечка" установлена на 15800 об/мин.</p>
+	<figurecaption class="album-item-caption">Yamaha YZFR</figurecaption>
+</figure>
+	<figure class="album-item">
+	<img src="./img/yamaha-xs850.jpg"  class="album-item-image">
+	<p class="album-item-description">Классический нэйкед был выпущен компанией Yamaha в 1969 году.Он напоминал многие европейские байки тех времён, однако имел и чисто японские отличия.</p>
+	<figurecaption class="album-item-caption">Yamaha XS</figurecaption>
+</figure>
+</div>
+</body>
+</html>
