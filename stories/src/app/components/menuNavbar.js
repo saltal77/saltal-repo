@@ -18,6 +18,11 @@ export default class menuNavbar extends Component {
         return <Modal_Window />;
     }
 
+    toLogoff(e){
+        e.preventDefault();
+        localStorage.clear();
+    }
+
     isActive(href) {
         //console.log(href);
         return window.location.pathname == href;
@@ -60,11 +65,13 @@ export default class menuNavbar extends Component {
                                 <li><NavLink to="/contacts" activeStyle={{ color: '#751975' }}>Контакты</NavLink></li>
                             </ul>
 
-                            <button type="submit" className="btn btn-info" data-toggle="modal" data-target="#blogModal" >Войти</button>
+                            <button type="submit" className={this.state.user ? 'none': 'btn btn-info'} data-toggle="modal" data-target="#blogModal" >Войти</button>
+
+                            <button type="submit" className={this.state.user ? 'btn btn-info': 'none'}  onClick={this.toLogoff}>Выйти</button>
 
                         </div>
 
-                        <span className={this.state.user ? '': 'none'} >Давно не виделись ! {this.state.user}</span>
+                        <span className={this.state.user ? '': 'none'} >Давно не виделись ! {this.state.user} </span>
                     </div>
                 </nav>
 

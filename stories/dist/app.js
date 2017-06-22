@@ -28063,6 +28063,12 @@
 	            return _react2.default.createElement(_modal2.default, null);
 	        }
 	    }, {
+	        key: 'toLogoff',
+	        value: function toLogoff(e) {
+	            e.preventDefault();
+	            localStorage.clear();
+	        }
+	    }, {
 	        key: 'isActive',
 	        value: function isActive(href) {
 	            //console.log(href);
@@ -28150,15 +28156,21 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'button',
-	                                { type: 'submit', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#blogModal' },
+	                                { type: 'submit', className: this.state.user ? 'none' : 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#blogModal' },
 	                                '\u0412\u043E\u0439\u0442\u0438'
+	                            ),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'submit', className: this.state.user ? 'btn btn-info' : 'none', onClick: this.toLogoff },
+	                                '\u0412\u044B\u0439\u0442\u0438'
 	                            )
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: this.state.user ? '' : 'none' },
 	                            '\u0414\u0430\u0432\u043D\u043E \u043D\u0435 \u0432\u0438\u0434\u0435\u043B\u0438\u0441\u044C ! ',
-	                            this.state.user
+	                            this.state.user,
+	                            ' '
 	                        )
 	                    )
 	                ),
