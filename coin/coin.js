@@ -20,7 +20,7 @@ else {
 	moneta = 0;
 }
 
-// если файл статистики есть покажем ее с помощью cli-table
+// если файл статистики есть - покажем его с помощью cli-table
 if(fs.existsSync('logg.json')){
 
 	fs.readFile('logg.json', function (err, data) {
