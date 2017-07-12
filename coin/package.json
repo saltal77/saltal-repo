@@ -1,8 +1,8 @@
 {
-  "name": "coins",
+  "name": "coin",
   "version": "1.0.0",
   "description": "",
-  "main": "coins_match.js",
+  "main": "coin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
