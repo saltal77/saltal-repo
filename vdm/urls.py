@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^$', main_view),
     url(r'^about/', about_view),
     url(r'^service/', service_view),
+    url(r'^discount/', discount_view),
     url(r'^gallery/', gallery_view),
     url(r'^interest/', interest_view),
     url(r'^review/', review_view),

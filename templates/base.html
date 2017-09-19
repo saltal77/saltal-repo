@@ -87,7 +87,15 @@
                                 <a href="/" >Главная</a>
                             </li>
                             <li><a href="/about/">Обо мне</a></li>
-                            <li><a href="/service/">Услуги</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Услуги <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/service/">Перечень услуг</a></li>
+                                        <li><a href="/discount/">Акции</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                              <li><a href="/gallery/">Фото работ</a></li>
                              <li><a href="/interest/">Интересное</a></li>
                              <li><a href="/review/">Отзывы</a></li>
@@ -113,7 +121,7 @@
                             <div class="block">
                                 <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">Что вы думаете ?</h1>
                                 <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Связатся со мной</a>
+                                <a href="/contact/" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Связатся со мной</a>
                             </div>
                         </div>
 
@@ -139,18 +147,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                                    <i class="ion-social-twitter></i>
+                                <a href="http://www.ok.ru">
+                                    <img src="{% static 'images/icons/ok.png'%}">
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="Linkedin">
-                                    <i class="ion-social-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                                    <i class="ion-social-googleplus"></i>
+                                <a href="http://www.vk.com">
+                                    <img src="{% static 'images/icons/vk.png'%}">
                                 </a>
                             </li>
                         </ul>
