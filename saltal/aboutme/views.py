@@ -27,7 +27,7 @@ def learning_view(response):
     return render_to_response('learning.html', {'learns': learns, 'nodata': nodata})
 
 
-def job_info_view(responsee, pk):
+def job_info_view(response, pk):
 
     index = MyJobs.objects.filter(id=pk).values('orgname_id')
     index = index[0].get('orgname_id')
