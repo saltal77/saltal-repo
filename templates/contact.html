@@ -43,7 +43,7 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ea!
                                  consectetur adipisicing elit. Dolore, ea!
                             </p>
-                            <div class="contact-form">
+                            <!--<div class="contact-form">
                                 <form id="contact-form" method="post" action="sendmail.php" role="form">
                         
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
@@ -55,7 +55,7 @@
                                     </div>
                                     
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
-                                        <input type="text" placeholder="Тема" class="form-control" name="subject" id="subject">
+                                        <input type="text" placeholder="Телефон" class="form-control" name="subject" id="subject">
                                     </div>
                                     
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
@@ -68,7 +68,25 @@
                                     </div>                      
                                     
                                 </form>
-                            </div>
+                            </div>-->
+
+                            <div class="contact-form">
+    <form id="contact-form" method="POST" class="post-form" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field.errors }}
+        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+            {{field}}
+        </div>
+        {% endfor %}
+        <div id="submit" class="wow fadeInDown"  data-wow-duration="500ms" data-wow-delay="1.4s">
+            <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Отправить">
+        </div>
+    </form>
+               </div>
+
+
+
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -79,7 +97,7 @@
                                 
                             </p>
                             <div class="map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d817.5863410725932!2d41.43586992259406!3d52.75265686543075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1505674267238" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2414.8625376357713!2d41.43409011581613!3d52.75271517985884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x413916b1d109dbf3%3A0xa628e1386d82691c!2z0JLQsNGIINCh0LDQvdGC0LXRhdC90LjQug!5e0!3m2!1sru!2s!4v1506012969490" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -88,13 +106,13 @@
                     <div class="col-md-3">
                         <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
                             <i class="ion-ios-location-outline"></i>
-                            <p>Тамбов,  Планировочная ул.<br><br></p>
+                            <p>Тамбов, ул. Менделеева<br><br></p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <i class="ion-ios-email-outline"></i>
-                            <p>vadim.asya@gmail.com<br><br></p>
+                            <p>info@tambov-santehic.ru<br><br></p>
                         </div>
                     </div>
                     <div class="col-md-3">

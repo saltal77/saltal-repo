@@ -23,10 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%uwt6*pffio9(5@v9ftz5baaybxwb&ot=n^tn*8#k-v&0_oq^+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = False
 DEBUG = True
 
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ALLOWED_HOSTS = []
-
+ADMINS = (
+    ('saltal', 'saltal@yandex.ru'),
+)
 
 # Application definition
 
@@ -125,8 +129,22 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join('media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_PASSWORD = 'hotm@il'
+EMAIL_HOST_USER = 'saltal@yandex.ru'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+SERVER_EMAIL = 'saltal@yandex.ru'
+DEFAULT_FROM_EMAIL = 'saltal@yandex.ru'
+EMAIL_SUBJECT_PREFIX = "tambov-santehnic.ru: "
+
+DEVELOPER_EMAIL = 'saltal@yandex.ru'
+
+MASTER_EMAIL = 'saltal77@mail.ru'
 #LOGIN_URL = '/user/registration/'
 
 #LOGIN_REDIRECT_URL = '/welcome/'

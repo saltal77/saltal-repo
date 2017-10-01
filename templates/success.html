@@ -1,0 +1,34 @@
+{%  extends 'base.html' %}
+{% load staticfiles %}
+
+
+{%block content%}
+
+        <section class="moduler wrapper_404">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+                                <i class="ion-paper-airplane"></i>
+                                <i class="ion-chatbox-working"></i>
+                                <i class="ion-ios-paper"></i>
+                                    </h1>
+                            {% if author %}
+                            <h2 class="wow fadeInUp animated" data-wow-delay=".6s">Благодарю Вас за отзыв {{author}}! </h2>
+                            <p class="wow fadeInUp animated" data-wow-delay=".9s">Вскоре после модерации администратором он появится на сайте</p>
+                            <a href="/review/" class="btn btn-dafault btn-home wow fadeInUp animated" data-wow-delay="1.1s">Назад</a>
+                             {% endif %}
+                            {% if name %}
+                            <h2 class="wow fadeInUp animated" data-wow-delay=".6s">Ваша заявка отправлена {{name}},</h2>
+                            <p class="wow fadeInUp animated" data-wow-delay=".9s">В ближайшее время вы обязательно получите ответ на свой вопрос по почте или указанному телефону</p>
+                             <a href="/contact/" class="btn btn-dafault btn-home wow fadeInUp animated" data-wow-delay="1.1s">Назад</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
+

@@ -27,69 +27,67 @@
                 </div>
             </div>
             </section><!--/#Page header-->
-            <section id="blog-full-width">
+             <section id="blog-full-width">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
-                                <div class="blog-post-image">
-                                    <a href="post-fullwidth.html"><img class="img-responsive" src="{% static 'images/blog/post-1.jpg'%}" alt="" /></a>
+                            <div class="blog-post-image">
+                                <img src="{% static 'images/blog/santeh_otzyv.jpg'%}" class="img-responsive" alt="this is a title">
                                 </div>
-                                <div class="blog-content">
-                                    <h2 class="blogpost-title">
-                                    <a href="post-fullwidth.html">Space shouldn’t be the final frontier</a>
-                                    </h2>
-                                    <div class="blog-meta">
-                                        <span>Dec 11, 2020</span>
-                                        <span>by <a href="">Admin</a></span>
-                                        <span><a href="">business</a>,<a href="">people</a></span>
-                                    </div>
-                                    <p>Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Pellentesques sed volutpat ante, cursus port. Praesent mi magna, penatibus et magniseget dis parturient montes sed quia consequuntur magni dolores eos qui ratione.
-                                    </p>
-                                    <a href="single-post.html" class="btn btn-dafault btn-details">Continue Reading</a>
-                                </div>
-                                
+                                 <div class="portfolio-content">
+                                <h3 class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">
+                                    Вам понравилась работать со мной?
+                                </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                    Оставте свой отзыв, если вам не сложно и есть лишние 2-3 минуты, расскажите о своих впечатлениях от проделанной работы.
+                                </p>
+                            </div>
                             </article>
-                            <article class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
-                                <div class="blog-post-image">
-                                    <a href="post-fullwidth.html"><img class="img-responsive" src="{% static 'images/blog/post-2.jpg'%}" alt="" /></a>
-                                </div>
+                         {% for comment in comments %}
+                            {% if comment.display %}
+                            <article class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="700ms">
                                 <div class="blog-content">
-                                    <h2 class="blogpost-title">
-                                    <a href="post-fullwidth.html">Space shouldn’t be the final frontier</a>
-                                    </h2>
                                     <div class="blog-meta">
-                                        <span>Dec 11, 2020</span>
-                                        <span>by <a href="">Admin</a></span>
-                                        <span><a href="">business</a>,<a href="">people</a></span>
+                                        <span>{{ comment.date|date }}</span>
+                                        <span>{{ comment.author}}</span>
+                                        <span>{{ comment.town}}</span>
                                     </div>
-                                    <p>Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Pellentesques sed volutpat ante, cursus port. Praesent mi magna, penatibus et magniseget dis parturient montes sed quia consequuntur magni dolores eos qui ratione.
-                                    </p>
-                                    <a href="single-post.html" class="btn btn-dafault btn-details">Continue Reading</a>
+                                    <p>{{ comment.text }}</p>
+                                    <!--<a href="single-post.html" class="btn btn-dafault btn-details">Continue Reading</a>-->
                                 </div>
-                                
                             </article>
-                            <article class="wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">
-                                <div class="blog-post-image">
-                                    <a href="post-fullwidth.html"><img class="img-responsive" src="{% static 'images/blog/post-3.jpg'%}" alt="" /></a>
-                                </div>
-                                <div class="blog-content">
-                                    <h2 class="blogpost-title">
-                                    <a href="post-fullwidth.html">Space shouldn’t be the final frontier</a>
-                                    </h2>
-                                    <div class="blog-meta">
-                                        <span>Dec 11, 2020</span>
-                                        <span>by <a href="">Admin</a></span>
-                                        <span><a href="">business</a>,<a href="">people</a></span>
-                                    </div>
-                                    <p>Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Pellentesques sed volutpat ante, cursus port. Praesent mi magna, penatibus et magniseget dis parturient montes sed quia consequuntur magni dolores eos qui ratione.
-                                    </p>
-                                    <a href="single-post.html" class="btn btn-dafault btn-details">Continue Reading</a>
-                                </div>
-                                
-                            </article>
+                            {%  endif %}
+                            {% empty %}
+                            <p>Пока нет отзывов :(</p>
+                            {%  endfor %}
                         </div>
                     </div>
                 </div>
             </section>
+<section id="contact-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3 class="subtitle wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
+                                    Написать Отзыв:
+                                </h3>
+<div class="contact-form">
+    <form id="contact-form" method="POST" class="post-form" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field.errors }}
+        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+            {{field}}
+        </div>
+        {% endfor %}
+        <div id="submit" class="wow fadeInDown"  data-wow-duration="500ms" data-wow-delay="1.4s">
+            <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Отправить">
+        </div>
+    </form>
+               </div>
+                  </div>
+                    </div>
+                </div>
+        </section>
 {%endblock%}

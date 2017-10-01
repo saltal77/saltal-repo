@@ -40,35 +40,21 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="block">
-                            <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">What We Love To Do</h2>
-                            <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis porro recusandae non quibusdam iure adipisci.</p>
+                            <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Почему работа со мной выгодна?</h2>
+                            <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">У частного мастера нет никаких наценок, есть возможность всегда подстроится под конкретного клиента. Посмотрите на мои расценки и вы будете приятно удивлены!</p>
                             <div class="row service-parts">
                                 <div class="col-md-6">
                                     <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="600ms">
-                                        <i class="ion-ios-paper-outline"></i>
-                                        <h4>BRANDING</h4>
-                                        <p>Veritatis eligendi, dignissimos. Porta fermentum mus aute pulvinar earum minus platea massa feugiat rutrum urna facilisi ipsameum.</p>
+                                        <i class="ion-ribbon-a"></i>
+                                        <h4>Отличное качество</h4>
+                                        <p>Долгое время работы на рынке подобных услуг, позволяет предоставлять только проверенные материалы и оборудование.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="800ms">
-                                        <i class="ion-ios-pint-outline"></i>
-                                        <h4>DESIGN</h4>
-                                        <p>Veritatis eligendi, dignissimos. Porta fermentum mus aute pulvinar earum minus platea massa feugiat rutrum urna facilisi ipsameum.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="1s">
-                                        <i class="ion-ios-paper-outline"></i>
-                                        <h4>DEVELOPMENT</h4>
-                                        <p>Veritatis eligendi, dignissimos. Porta fermentum mus aute pulvinar earum minus platea massa feugiat rutrum urna facilisi ipsameum.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="1.1s">
-                                        <i class="ion-ios-paper-outline"></i>
-                                        <h4>THEMEING</h4>
-                                        <p>Veritatis eligendi, dignissimos. Porta fermentum mus aute pulvinar earum minus platea massa feugiat rutrum urna facilisi ipsameum.</p>
+                                        <i class="ion-happy"></i>
+                                        <h4>Лучшая цена на рынке</h4>
+                                        <p>Только проверенные материалы, подтвержденные и испытанные временем, оптовая цена за счет моей прямой работы с поставщиком.</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +62,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="block">
-                            <img class="img-responsive" src="{% static 'images/team.jpg'%}" alt="">
+                            <img class="img-responsive" src="{% static 'images/santeh_service.jpg'%}" alt="">
                         </div>
                     </div>
                 </div>
@@ -84,51 +70,35 @@
         </section>
 
 
-
-        <!-- 
-        ================================================== 
-            Clients Section Start
-        ================================================== -->
-        <section id="clients">
+<section>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="subtitle text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay=".3s">Our Happy Clinets</h2>
-                        <p class="subtitle-des text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
-                        <div id="clients-logo" class="owl-carousel">
-                            <div>
-                                <img src="{% static 'images/clients/logo-1.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-2.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-3.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-4.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-5.jpg'%}" alt="">
-                            </div>
-                             <div>
-                                <img src="{% static 'images/clients/logo-1.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-2.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-3.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-4.jpg'%}" alt="">
-                            </div>
-                            <div>
-                                <img src="{% static 'images/clients/logo-5.jpg'%}" alt="">
-                            </div>
-                        </div>
+                        <table class="table table-hover" >
+                            <tr>
+                                <th>Наименование</th>
+                                <th>Описание услуги</th>
+                                <th>Объем / Количество</th>
+                                <th>Цена</th>
+                            </tr>
+                        {% for service in services %}
+                            <tr>
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{ service.title }}</td>
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{ service.text }}</td>
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{ service.quanty }}.</td>
+                                {% if service.price %}
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{  service.price }} руб.</td>
+                                {% else %}
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms"> по договоренности.</td>
+                                {% endif %}
+                            </tr>
+                        {% empty %}
+                       <p>Контент редактируется</p>
+                        {% endfor %}
+                            </table>
                     </div>
                 </div>
             </div>
-        </section>
+</section>
+
 {%endblock%}

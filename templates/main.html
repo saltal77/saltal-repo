@@ -75,37 +75,42 @@
                         </p>
                     </div>
                     <div class="row">
+{% for work in portfolio %}
+
                         <div class="col-sm-4 col-xs-12">
-                            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="{{work.delay}}ms">
                                 <div class="img-wrapper">
-                                    <img src="{% static 'images/portfolio/item-1.jpg'%}" class="img-responsive" alt="this is a title" >
+                                    <img src='{{  work.foto.url }}' class="img-responsive" alt="this is a title" >
                                     <div class="overlay">
                                         <div class="buttons">
-                                            <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-1.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
+                                            <a rel="gallery" class="fancybox" href={{ work.foto.url }} >Просмотр</a>
+                                            <a target="_blank" href="/gallery/">Все работы</a>
                                         </div>
                                     </div>
                                 </div>
                                 <figcaption>
                                 <h4>
                                 <a href="#">
-                                    Работа 1
+                                    {{ work.name}}
                                 </a>
                                 </h4>
                                 <p>
-                                    Описание 1
+                                    {{ work.text }}
                                 </p>
                                 </figcaption>
                             </figure>
                         </div>
-                        <div class="col-sm-4 col-xs-12">
+
+{%  endfor %}
+
+                       <!-- <div class="col-sm-4 col-xs-12">
                             <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                                 <div class="img-wrapper">
                                     <img src="{% static 'images/portfolio/item-2.jpg'%}" class="img-responsive" alt="this is a title" >
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-2.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
+                                            <a target="_blank" href="/gallery/">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +133,7 @@
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-3.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
+                                            <a target="_blank" href="/gallery/">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +155,7 @@
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-4.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
+                                            <a target="_blank" href="/gallery/">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +178,7 @@
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-5.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
+                                            <a target="_blank" href="/gallery/">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +201,6 @@
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-6.jpg'%}">Просмотр</a>
-                                            <a target="_blank" href="single-portfolio.html">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +215,7 @@
                                 </p>
                                 </figcaption>
                             </figure>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </section> <!-- #works -->

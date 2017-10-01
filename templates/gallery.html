@@ -32,19 +32,26 @@
             <section id="gallery" class="gallery">
                 <div class="container">
                     <div class="row">
+
+
+                        {% for work in portfolio %}
+
+
                         <div class="col-sm-4 col-xs-12">
-                            <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="500ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
+                            <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="500ms" data-wow-delay="{{work.delay}}ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
                                 <div class="img-wrapper">
-                                    <img src="{% static 'images/portfolio/item-1.jpg'%}" class="img-responsive" alt="this is a title">
+                                    <img src="{{ work.foto.url }}" class="img-responsive" alt="this is a title">
                                     <div class="overlay">
                                         <div class="buttons">
-                                            <a rel="gallery" class="fancybox" href="{% static 'images/portfolio/item-1.jpg'%}">Demo</a>
+                                            <a rel="gallery" class="fancybox" href="{{ work.foto.url }}">Просмотр</a>
                                         </div>
                                     </div>
                                 </div>
                             </figure>
                         </div>
-                        <div class="col-sm-4 col-xs-12">
+                        {% endfor %}
+
+                        <!--<div class="col-sm-4 col-xs-12">
                             <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 300ms; -webkit-animation-delay: 300ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
                                 <div class="img-wrapper">
                                     <img src="{% static 'images/portfolio/item-2.jpg'%}" class="img-responsive" alt="this is a title">
@@ -103,7 +110,7 @@
                                     </div>
                                 </div>
                             </figure>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </section>
