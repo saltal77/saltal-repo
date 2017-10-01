@@ -20,6 +20,23 @@ class AboutMe(models.Model):
     def __str__(self):
        return u'{}'.format(self.name)
 
+
+@python_2_unicode_compatible
+class Resume(models.Model):
+    name = models.CharField(verbose_name='Название', max_length=20, default='Страница Обо мне')
+    slogan1 = models.TextField(verbose_name='Со мной выгодно', max_length=200)
+    slogan2 = models.TextField(verbose_name='Что получаете', max_length=200)
+    slogan3 = models.TextField(verbose_name='Ответсвенный подход', max_length=200)
+    about = models.TextField(verbose_name='Обо мне - кратко', max_length=500)
+
+    class Meta:
+        verbose_name = u'Обо мне Страница Обо мне'
+        verbose_name_plural = u'Обо мне Страница Обо мне'
+
+    def __str__(self):
+        return u'{}'.format(self.name)
+
+
 @python_2_unicode_compatible
 class MainPageWorks(models.Model):
     name = models.CharField(verbose_name='Название', max_length=20, default='Название работы')

@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from santeh.views import *
 
 
-
 urlpatterns = [
     url(r'^$', main_view),
     url(r'^about/', about_view),

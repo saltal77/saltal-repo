@@ -24,6 +24,8 @@ class DiscountAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['title', 'price']
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
 
 
 admin.site.register(AboutMe, AboutMeAdmin)
@@ -32,4 +34,5 @@ admin.site.register(Comment, CommentAdmin)
 admin.site.register(Interest, InterestAdmin)
 admin.site.register(Discount, DiscountAdmin)
 admin.site.register(Service, ServiceAdmin)
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Resume)

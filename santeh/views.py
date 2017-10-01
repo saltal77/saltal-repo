@@ -13,6 +13,12 @@ from django.conf import settings
 #from django.core.mail import send_mail
 
 
+
+def sender_mail(theme, text):
+	msg=EmailMessage(theme, text, settings.SERVER_EMAIL, [settings.MASTER_EMAIL])
+	msg.content_subtype = 'html'
+	msg.send()
+
 def main_view(request):
     info = AboutMe.objects.all()
     slogan1 = info[0].slogan1
@@ -25,14 +31,14 @@ def main_view(request):
         slogan2, 'slogan3' : slogan3, 'slogan4' : slogan4, 'about' : about, 'portfolio' : portfolio})
 
 
-def sender_mail(theme, text):
-	msg=EmailMessage(theme, text, settings.SERVER_EMAIL, [settings.MASTER_EMAIL])
-	msg.content_subtype = 'html'
-	msg.send()
-
-
 def about_view(request):
-    return render(request, 'about.html')
+    mresume = Resume.objects.all()
+    slogan1 = mresume[0].slogan1
+    slogan2 = mresume[0].slogan2
+    slogan3 = mresume[0].slogan3
+    about = mresume[0].about
+    return render(request, 'about.html', {'slogan1' : slogan1, 'slogan2' :
+        slogan2, 'slogan3' : slogan3, 'about' : about })
 
 
 def service_view(request):
