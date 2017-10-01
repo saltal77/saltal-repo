@@ -134,7 +134,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_PASSWORD = 'hotm@il'
+EMAIL_HOST_PASSWORD = 'XXXX'
 EMAIL_HOST_USER = 'saltal@yandex.ru'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
