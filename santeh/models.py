@@ -38,8 +38,20 @@ class Resume(models.Model):
 
 
 @python_2_unicode_compatible
+class TypeOfWorks(models.Model):
+    type = models.CharField(verbose_name='Название', max_length=20, default='Название работы')
+
+    class Meta:
+        verbose_name = u'Типы работ для страницы Работы и Галерея'
+        verbose_name_plural = u'Типы работ для страницы Работы и Галерея'
+
+    def __str__(self):
+        return u'{}'.format(self.type)
+
+
+@python_2_unicode_compatible
 class MainPageWorks(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=20, default='Название работы')
+    name = models.ForeignKey(TypeOfWorks, verbose_name='Название работы', null=True)
     text = models.CharField(verbose_name='Описание', max_length=40)
     foto = models.ImageField(verbose_name='Фото', upload_to='works', null=True)
     date = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
@@ -109,7 +121,7 @@ class Discount(models.Model):
 
 @python_2_unicode_compatible
 class Service(models.Model):
-    title = models.CharField(verbose_name='Название Работ', max_length=100)
+    title = models.ForeignKey(TypeOfWorks, verbose_name='Название работы', null=True)
     text = models.TextField(verbose_name='Описание')
     quanty = models.CharField(verbose_name='Величина Количество Объем', max_length=30, default='шт')
     price = models.DecimalField(verbose_name='Цена',max_digits=8, decimal_places=0, null=True, blank=True)

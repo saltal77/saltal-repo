@@ -22,9 +22,15 @@ class CommentForm(forms.ModelForm):
 
 
 class OrderForm(forms.ModelForm):
-    tlf = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
-                                     'placeholder': 'Ваш телефон'}),required=False)
-    
+
+    tlf = forms.RegexField(regex=r'^\d{8,15}$',
+
+                    widget=forms.TextInput(attrs={'class': 'form-control',
+                                         'placeholder': 'Ваш телефон в формате 89998887766'}), required=False)
+    # def __init__(self, *args, **kwargs):
+    #     super(OrderForm, self).__init__(*args, **kwargs)
+    #     self.fields['tlf'].error_messages = {'required': 'Не верно введен телефон, правилььный формат: 89098087766'}
+    #
     class Meta:
         model = Order
         fields = '__all__'
@@ -34,7 +40,3 @@ class OrderForm(forms.ModelForm):
                   'text': forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Заявка или Сообщение'}),
                   }
 
-
-#phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$',
-#error_message = ("Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-                                #'^\+\d{8,15}$'

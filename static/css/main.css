@@ -862,6 +862,7 @@ ul.social-icons li {
 .about-feature .block {
   color: #fff;
   width: 33.33%;
+  height: 300px;
   padding: 5%;
   float: left;
 }

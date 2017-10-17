@@ -1,11 +1,6 @@
 {%  extends 'base.html' %}
 {% load staticfiles %}
-
-
 {%block content%}
-
-
-
         <!--
         ==================================================
         Global Page Section Start
@@ -24,7 +19,6 @@
                 </div>
             </div>
             </section><!--/#Page header-->
-
             {% for discount in discounts %}
             <section class="portfolio-single">
                 <div class="container">
@@ -32,7 +26,7 @@
                         <article class="col-md-12">
                             <article   class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
                                 {% if discount.foto %}
-                                <img class="img-responsive" alt="" src="{{ discount.foto.url }}">
+                                <img class="img-responsive" alt="Скидки" src="{{ discount.foto.url }}">
                                 {% endif %}
                             </article>
                             <div class="portfolio-content">
@@ -51,5 +45,4 @@
 {%  empty %}
 <p>Контент редактируется</p>
 {% endfor %}
-
 {%endblock%}

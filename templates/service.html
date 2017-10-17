@@ -1,10 +1,6 @@
 {%  extends 'base.html' %}
 {% load staticfiles %}
-
-
 {%block content%}
-
-
         <!-- 
         ================================================== 
             Global Page Section Start
@@ -29,8 +25,6 @@
                 </div>
             </div>   
         </section><!--/#Page header-->
-
-
         <!-- 
         ================================================== 
             Service Page Section  Start
@@ -47,14 +41,14 @@
                                     <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="600ms">
                                         <i class="ion-ribbon-a"></i>
                                         <h4>Отличное качество</h4>
-                                        <p>Долгое время работы на рынке подобных услуг, позволяет предоставлять только проверенные материалы и оборудование.</p>
+                                        <p>Лучшее качество  благодаря не только моему опыту, но и использованию профессионального инструмента и качественного материала</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="800ms">
                                         <i class="ion-happy"></i>
                                         <h4>Лучшая цена на рынке</h4>
-                                        <p>Только проверенные материалы, подтвержденные и испытанные временем, оптовая цена за счет моей прямой работы с поставщиком.</p>
+                                        <p>При работе с крупными объектами есть возможность приобретать материал по оптовым ценам</p>
                                     </div>
                                 </div>
                             </div>
@@ -62,14 +56,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="block">
-                            <img class="img-responsive" src="{% static 'images/santeh_service.jpg'%}" alt="">
+                            <img class="img-responsive" src="{% static 'images/santeh_service.jpg'%}" alt="Сантехнические работы">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
 <section>
             <div class="container">
                 <div class="row">
@@ -87,7 +79,7 @@
                                 <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{ service.text }}</td>
                                 <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{ service.quanty }}.</td>
                                 {% if service.price %}
-                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">{{  service.price }} руб.</td>
+                                <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms">от  {{  service.price }} руб.</td>
                                 {% else %}
                                 <td class="block wow fadeInUp animated" data-wow-duration="400ms" data-wow-delay="{{service.delay}}ms"> по договоренности.</td>
                                 {% endif %}
@@ -100,5 +92,4 @@
                 </div>
             </div>
 </section>
-
 {%endblock%}

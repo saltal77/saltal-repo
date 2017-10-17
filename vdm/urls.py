@@ -30,5 +30,4 @@ urlpatterns = [
     url(r'^review/', review_view),
     url(r'^contact/', contact_view),
     url(r'^adminka/', admin.site.urls),
-    #url(r'^success/', success_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

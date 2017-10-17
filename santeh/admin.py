@@ -11,6 +11,8 @@ class AboutMeAdmin(admin.ModelAdmin):
 class MainPageWorksAdmin(admin.ModelAdmin):
     list_display = ['name', 'text']
 
+class TypeOfWorksAdmin(admin.ModelAdmin):
+    list_display = ['type']
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['author', 'town', 'flag']
@@ -30,6 +32,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(AboutMe, AboutMeAdmin)
 admin.site.register(MainPageWorks, MainPageWorksAdmin)
+admin.site.register(TypeOfWorks, TypeOfWorksAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Interest, InterestAdmin)
 admin.site.register(Discount, DiscountAdmin)

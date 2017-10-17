@@ -1,11 +1,6 @@
 {%  extends 'base.html' %}
 {% load staticfiles %}
-
 {%block content%}
-
-
-
-
         <!-- 
         ================================================== 
             Global Page Section Start
@@ -30,7 +25,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 
         ================================================== 
             Company Description Section Start
@@ -39,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
-                        <img src="{% static 'images/about/myfoto.jpg'%}" alt="" class="img-responsive">
+                        <img src="{% static 'images/about/myfoto.jpg'%}" alt="Мое фото" class="img-responsive">
                     </div>
                     <div class="col-md-6">
                         <div class="block">
@@ -52,8 +46,6 @@
                 </div>
             </div>
         </section>
-
-
         <!-- 
         ================================================== 
             Company Feature Section Start
@@ -62,7 +54,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="block about-feature-1 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">
-                        <h2>
+                        <h2 class="item_title">
                         Почему со мной выгодно
                         </h2>
                         <p>
@@ -88,6 +80,4 @@
                 </div>
             </div>
         </section>
-
-        
 {%endblock%}

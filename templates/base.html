@@ -6,11 +6,29 @@
         ================================================== -->
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="icon" type="image/png" href="{% static 'mages/favicon.png'%}">
+        <link rel="icon" href="{% static 'images/favicon.ico'%}" type="image/x-icon">
         <title>Ваш Сантехник</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="">
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="{% static 'sitemap.xml'%}" />
+       <meta name="description" content="
+        Любые сантехнические работы. Мастер профессионал. Быстрый выезд. 
+Полный спектр сантехнических работ. Качество на пять с плюсом. Оставить заявку
+ можно по телефону +7 (915) 675-16-42
+">
+        <meta name="keywords" content="сантехника, отопление, водоснабжение, подключение
+        стиральных машин, установка смесителя, установка ванн, установка унитаза, установка газовых колонок, установка газовых котлов,
+сантехнические работы, услуги сантехника,  низкие цены, приемлемая стоимость сантехнических работ, 
+вызов, слесарь,  гибкие расценки, установка, Тамбов
+">
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:title" content="Услуги сантехника в Тамбове. Не дорого! Звоните!" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Услуги сантехника в Тамбове. Низкие цены на работу!" />
+<meta property="og:url" content="http://tambov-santehnic.ru" />
+<meta property="og:site_name" content="Ваш Сантехник" />
+<meta property="og:image" content="http://tambov-santehnic.ru/static/images/logo.png" />
+<meta property="og:image:width" content="164" />
+<meta property="og:image:height" content="37" />
+        <link type="text/plain" rel="author" href="{% static 'humans.txt'%}" />
         <!-- Mobile Specific Metas
         ================================================== -->
         <meta name="format-detection" content="telephone=no">
@@ -37,6 +55,36 @@
         
         <!-- Template Javascript Files
         ================================================== -->
+
+        <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter46132212 = new Ya.Metrika({
+                    id:46132212,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/46132212" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
         <!-- modernizr js -->
         <script src="{% static 'js/vendor/modernizr-2.6.2.min.js'%}"></script>
         <!-- jquery -->
@@ -64,17 +112,16 @@
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">Переключение навигации</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
                     <!-- /responsive nav button -->
-                    
                     <!-- logo -->
                     <div class="navbar-brand">
                         <a href="/" >
-                            <img src="{% static 'images/logo.png'%}" alt="">
+                            <img src="{% static 'images/logo.png'%}" alt="Логотип">
                         </a>
                     </div>
                     <!-- /logo -->
@@ -106,10 +153,8 @@
                 <!-- /main nav -->
             </div>
         </header>
-
         {%block content%}
         {%endblock%}
-
         <!--
             ==================================================
             Call To Action Section Start
@@ -120,7 +165,7 @@
                         <div class="col-md-12">
                             <div class="block">
                                 <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">Нужна консультация или помощь в решении не простой задачи ? </h1>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Гарантирую лучшее качество всегда и везде благодаря не только моему опыту, но и использованию профессионального инструмента и качественного материала</p>
                                 <a href="/contact/" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Связатся со мной</a>
                             </div>
                         </div>
@@ -137,6 +182,9 @@
                 <div class="container">
                     <div class="col-md-8">
                         <p class="copyright"> &copy <span>{% now "Y" %}</span> Designed & Developed by <a href="http://www.Themefisher.com">Themefisher </a> Powered by saltal </p>
+                        <a href="{% static 'humans.txt'%}">
+                                    <img src="{% static 'images/humanstxt.gif'%}">
+                                </a>
                     </div>
                     <div class="col-md-4">
 
@@ -146,19 +194,18 @@
                                 <p class="copyright">Мои странички в социальных сетях:</p>
                             </li>
                             <li>
-                                <a href="http://www.ok.ru">
+                                <a href="https://ok.ru/profile/551041578231">
                                     <img src="{% static 'images/icons/ok.png'%}">
                                 </a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="http://www.vk.com">
                                     <img src="{% static 'images/icons/vk.png'%}">
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </div>
             </footer> <!-- /#footer -->
-                
         </body>
     </html>

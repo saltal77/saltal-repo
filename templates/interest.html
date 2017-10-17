@@ -1,11 +1,6 @@
 {%  extends 'base.html' %}
 {% load staticfiles %}
-
-
 {%block content%}
-
-
-
         <!--
         ==================================================
         Global Page Section Start
@@ -25,6 +20,17 @@
                 </div>
             </div>
             </section><!--/#Page header-->
+     <div class="container">
+          <div class="row">
+                        <div class="col-md-12">
+                            <article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+                            <div class="blog-post-image">
+                                <img src="{% static 'images/wrench.jpg'%}" class="img-responsive" alt="Ключик">
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+              </div>
 {% for interest in interests %}
             <section class="portfolio-single">
                 <div class="container">
@@ -32,7 +38,7 @@
                         <div class="col-md-12">
                             <article   class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
                                 {% if interest.foto %}
-                                <img class="img-responsive" alt="" src="{{ interest.foto.url }}">
+                                <img class="img-responsive" alt="Интересные фото" src="{{ interest.foto.url }}">
                                 {% endif %}
                             </article>
                             <div class="portfolio-content">
@@ -51,5 +57,4 @@
 {%  empty %}
 <p>Контент редактируется</p>
 {% endfor %}
-
 {%endblock%}
