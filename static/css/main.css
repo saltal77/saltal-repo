@@ -1086,3 +1086,6 @@ article {
   color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.ya-share2__badge {
+  background-color: #02bdd5 !important; 
+}
