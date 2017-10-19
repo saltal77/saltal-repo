@@ -85,6 +85,8 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/46132212" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+        <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+        <script src="//yastatic.net/share2/share.js"></script>
         <!-- modernizr js -->
         <script src="{% static 'js/vendor/modernizr-2.6.2.min.js'%}"></script>
         <!-- jquery -->
@@ -180,29 +182,21 @@
             ================================================== -->
             <footer id="footer">
                 <div class="container">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <p class="copyright"> &copy <span>{% now "Y" %}</span> Designed & Developed by <a href="http://www.Themefisher.com">Themefisher </a> Powered by saltal </p>
                         <a href="{% static 'humans.txt'%}">
                                     <img src="{% static 'images/humanstxt.gif'%}">
                                 </a>
                     </div>
-                    <div class="col-md-4">
 
+                    <div class="col-md-6">
                         <!-- Social Media -->
-                        <ul class="social">
+                      <ul class="social">
                             <li>
-                                <p class="copyright">Мои странички в социальных сетях:</p>
+                                <p class="copyright">Подеитесь с друзьями:</p>
                             </li>
-                            <li>
-                                <a href="https://ok.ru/profile/551041578231">
-                                    <img src="{% static 'images/icons/ok.png'%}">
-                                </a>
-                            </li>
-                            <!--<li>
-                                <a href="http://www.vk.com">
-                                    <img src="{% static 'images/icons/vk.png'%}">
-                                </a>
-                            </li>-->
+                             <li><div class="ya-share2" style="font-color: red" 
+                              data-services="vkontakte,facebook,odnoklassniki,moimir,twitter"></div></li>
                         </ul>
                     </div>
                 </div>
