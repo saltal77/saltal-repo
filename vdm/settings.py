@@ -28,7 +28,7 @@ SECRET_KEY = DJANGO_SECRET_KEY
 DEBUG = True
 
 #ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-#ALLOWED_HOSTS = ['www.tambov-santehnic.ru','tambov-santehnic.ru', '82.146.40.167']
+#ALLOWED_HOSTS = ['www.tambov-santehnic.ru','tambov-santehnic.ru']
 ALLOWED_HOSTS = []
 ADMINS = (
     ('saltal', 'saltal@yandex.ru'),
