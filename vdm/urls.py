@@ -31,5 +31,5 @@ urlpatterns = [
     url(r'^review/', review_view),
     url(r'^contact/', contact_view),
     url(r'^adminka/', admin.site.urls),
-    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", content_type="text/plain")),
+    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
