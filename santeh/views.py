@@ -65,7 +65,7 @@ def review_view(request):
     comments = Comment.objects.all().order_by('-date')
     if request.method == "POST":
         form = CommentForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and not request.POST['honey']:
             comment = form.save(commit=False)
             author = request.POST['author']
             text = request.POST['text']
@@ -89,7 +89,7 @@ def review_view(request):
 def contact_view(request):
     if request.method == "POST":
         form = OrderForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and not request.POST['honey']:
             order = form.save(commit=False)
             name = request.POST['name']
             email = request.POST['email']
