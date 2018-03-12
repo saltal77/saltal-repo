@@ -15,6 +15,7 @@ class CommentForm(forms.ModelForm):
     text = forms.CharField(label='Отзыв', widget=forms.Textarea(attrs={'class': 'form-control',
                                                                           'placeholder': 'Ваш отзыв'}),
                              required=True)
+    honey = forms.CharField(widget=forms.HiddenInput(attrs={'value': ''}), required=False)
 
     class Meta:
         model = Comment
@@ -27,6 +28,7 @@ class OrderForm(forms.ModelForm):
 
                     widget=forms.TextInput(attrs={'class': 'form-control',
                                          'placeholder': 'Ваш телефон в формате 89998887766'}), required=False)
+    honey = forms.CharField(widget=forms.HiddenInput(attrs={'value': ''}), required=False)
     # def __init__(self, *args, **kwargs):
     #     super(OrderForm, self).__init__(*args, **kwargs)
     #     self.fields['tlf'].error_messages = {'required': 'Не верно введен телефон, правилььный формат: 89098087766'}
