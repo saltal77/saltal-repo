@@ -1,5 +1,5 @@
 
-# mpm i -g vue-cli
+# npm i -g vue-cli
 # vue init vueschool/webpack-template vueschool-forum
 
 
