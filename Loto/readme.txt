@@ -1,3 +1,27 @@
+Lotto Game (90)
+
+Lotto rules.
+The game is played using special cards on which numbers are marked,
+and chips (barrels) with numbers.
+The number of barrels is 90 pieces (with numbers from 1 to 90).
+Each card contains 3 lines of 9 cells. Each line contains 5 random digits,
+arranged in ascending order. All numbers on the card are unique.
+The game has 2 players: user and computer. Each at the beginning is given
+random card.
+Each move selects one random barrel and is displayed on the screen.
+A player card and a computer card are also displayed.
+The user is invited to cross out the number on the card or continue.
+If the player has chosen to cross out:
+If the number is on the card, it is crossed out and the game continues.
+If there is no number on the card, the player loses and the game ends.
+If the player has chosen to continue:
+If the number is on the card, the player loses and the game ends.
+If there is no number on the card, the game continues.
+
+The one who closes all the numbers on his card wins
+
+
+
 Игра Лото (90)
 """Лото
 Правила игры в лото.
