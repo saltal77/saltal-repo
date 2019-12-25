@@ -1,1 +1,1 @@
-Django-rest-framework примеры 
+Django-rest-framework примеры  / examples
