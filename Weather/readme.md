@@ -1,3 +1,21 @@
+OpenWeatherMap is an online service that provides a free API for accessing current weather data, forecasts, for web services and mobile applications. Archived data is available only on a commercial basis. The official meteorological services, data from airport weather stations, and data from private weather stations are used as a data source.
+
+    The OpenWeatherMap.py script retrieves a list of cities using APPID on the OpenWeatherMap website - http://bulk.openweathermap.org/sample/city.list.json.gz
+
+    Unpacks and asks about the city in which we want to know the weather (offering to enter the three initial letters, then displays a list of available cities based on the downloaded data)
+
+    Displays current weather data for the selected city.
+
+    Creates a SQL database and enters data on this city and weather, when it is called again, it updates the data in the database
+
+    The export_openweather.py script exports weather data for the desired city from the SQL database created by OpenWeatherMap.py in json or csv forms
+
+The format is export_openweather.py --csv filename city or export_openweather.py --json filename city
+
+    city ​​and file name can be omitted, then the entire database with the name filename will be exported
+
+
+
 OpenWeatherMap — онлайн-сервис, который предоставляет бесплатный API для доступа к данным о текущей погоде, прогнозам,
 для web-сервисов и мобильных приложений. Архивные данные доступны только на коммерческой основе.
 В качестве источника данных используются официальные метеорологические службы, данные из метеостанций аэропортов, 
