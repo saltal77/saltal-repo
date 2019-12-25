@@ -1,4 +1,4 @@
-
+# Vue JS school snippet 
 # npm i -g vue-cli
 # vue init vueschool/webpack-template vueschool-forum
 
